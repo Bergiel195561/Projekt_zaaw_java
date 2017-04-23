@@ -1,0 +1,4 @@
+rootProject.name = '1.0'
+include 'StaffManagement'
+findProject(':StaffManagement')?.name = '1.0'
+
