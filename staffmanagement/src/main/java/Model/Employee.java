@@ -40,6 +40,12 @@ public abstract class Employee {
         this.name = name;
         this.surname = surname;
     }
+
+    public Employee(String name, String surname, String jobPosition){
+        this.name = name;
+        this.surname = surname;
+        this.jobPosition = jobPosition;
+    }
     //endregion
 
 

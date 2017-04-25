@@ -26,13 +26,16 @@ public class Manager extends Employee {
     public Manager(String name, String surname){
         super(name, surname);
     }
+    public Manager(String name, String surname, String jobPosition){
+        super(name, surname, jobPosition);
+    }
     //endregion
 
     //region Methods
 
     @Override
     public String toString() {
-        return super.toString() + "Manager ["+ this.getName()+" "+this.getSurname() +"]";
+        return super.toString() + this.jobPosition + " ["+ this.getName()+" "+this.getSurname() +"]";
     }
 
     //endregion
