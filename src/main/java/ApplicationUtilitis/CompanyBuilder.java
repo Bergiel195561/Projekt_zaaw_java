@@ -40,10 +40,6 @@ public class CompanyBuilder {
         this.company.getDepartments().get(departmentId).setDepartmentLeader(new Manager(managerName, managerSurname, managerJobPosition));
     }
 
-    public void addOrdinaryEmployeeToDepartment(Integer departmentId, String employeeName, String employeeSurname, String employeeJobPosition) {
-        this.company.getDepartments().get(departmentId).addDepartmentMember(new OrdinaryEmployee(employeeName, employeeSurname, employeeJobPosition));
-    }
-
     public Company getCompany() {
         return company;
     }
