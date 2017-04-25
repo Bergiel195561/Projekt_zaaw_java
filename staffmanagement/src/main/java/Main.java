@@ -10,11 +10,11 @@ import Model.Manager;
 public class Main {
     public static void main (String[] args){
 
-        Employee employee1 = EmployeeFactory.getEmployee(EmployeeType.OrdinaryEmployee);
-        Employee employee2 = EmployeeFactory.getEmployee(EmployeeType.Manager);
+//        Employee employee1 = EmployeeFactory.getEmployee(EmployeeType.OrdinaryEmployee);
+//        Employee employee2 = EmployeeFactory.getEmployee(EmployeeType.Manager);
 
-        System.out.println(employee1.toString());
-        System.out.println(employee2.toString());
+//        System.out.println(employee1.toString());
+//        System.out.println(employee2.toString());
 
     }
 }
