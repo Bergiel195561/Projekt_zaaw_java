@@ -7,6 +7,7 @@ public class OrdinaryEmployee extends Employee{
 
 
 
+
     //region Constructors
     public OrdinaryEmployee(String name, String surname){
         super(name, surname);
@@ -14,11 +15,12 @@ public class OrdinaryEmployee extends Employee{
     //endregion
 
     //region Methods
+
     @Override
-    public void display() {
-        super.display();
-        System.out.println("Ordinary Employee");
+    public String toString() {
+        return super.toString() + "Ordinary Employee";
     }
+
     //endregion
 
 }

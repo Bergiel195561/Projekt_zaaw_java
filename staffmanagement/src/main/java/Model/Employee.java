@@ -39,8 +39,9 @@ public abstract class Employee {
     }
     //endregion
 
-    public void display(){
-        System.out.print("I am ");
-    }
 
+    @Override
+    public String toString() {
+        return "I am ";
+    }
 }

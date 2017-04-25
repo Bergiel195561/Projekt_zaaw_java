@@ -24,11 +24,12 @@ public class Manager extends Employee {
     //endregion
 
     //region Methods
+
     @Override
-    public void display() {
-        super.display();
-        System.out.println("Manager");
+    public String toString() {
+        return super.toString() + "Manager";
     }
+
     //endregion
 
 }
