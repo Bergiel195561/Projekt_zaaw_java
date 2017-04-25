@@ -2,9 +2,6 @@ package Model;
 
 import Utils.CustomHashSet;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Klasa odpowiedzialna za dział w firmie
  *
@@ -13,7 +10,7 @@ import java.util.Set;
 public class Department {
     private String name;
     private Manager departmentLeader;
-    private CustomHashSet<OrdinaryEmployee> departmentMembers = new CustomHashSet<OrdinaryEmployee>();
+    private CustomHashSet<Team> teams = new CustomHashSet<Team>();
 
     public Department(String name) {
         this.name = name;
@@ -28,12 +25,12 @@ public class Department {
         this.departmentLeader = departmentLeader;
     }
 
-    public void setDepartmentMembers(CustomHashSet<OrdinaryEmployee> departmentMembers) {
-        this.departmentMembers = departmentMembers;
+    public void setTeams(CustomHashSet<Team> teams) {
+        this.teams = teams;
     }
 
-    public void addDepartmentMember(OrdinaryEmployee newMember) {
-        this.departmentMembers.add(newMember);
+    public void addTeam(Team newTeam) {
+        this.teams.add(newTeam);
     }
     //endregion
 
@@ -46,8 +43,8 @@ public class Department {
         return departmentLeader;
     }
 
-    public CustomHashSet<OrdinaryEmployee> getDepartmentMembers() {
-        return departmentMembers;
+    public CustomHashSet<Team> getTeams() {
+        return teams;
     }
     //endregion
 
