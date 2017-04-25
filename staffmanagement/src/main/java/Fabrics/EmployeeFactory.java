@@ -13,14 +13,14 @@ import java.util.HashMap;
 public class EmployeeFactory {
 
     public static Employee getEmployee(EmployeeType employeeType, HashMap<String, String> dataMap){
-        if(dataMap.containsKey("name") && dataMap.containsKey("surname")){
+        if(dataMap.containsKey("name") && dataMap.containsKey("surname") && dataMap.containsKey("jobPosition")){
             switch(employeeType){
 
                 case OrdinaryEmployee:
-                    return new OrdinaryEmployee(dataMap.get("name"), dataMap.get("surname"));
+                    return new OrdinaryEmployee(dataMap.get("name"), dataMap.get("surname"), dataMap.get("jobPosition"));
 
                 case Manager:
-                    return new Manager(dataMap.get("name"), dataMap.get("surname"));
+                    return new Manager(dataMap.get("name"), dataMap.get("surname"), dataMap.get("jobPosition"));
 
                 default:
                     break;

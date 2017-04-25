@@ -36,9 +36,10 @@ public abstract class Employee {
 
     //region Constructors
     public Employee(){}
-    public Employee(String name, String surname){
+    public Employee(String name, String surname, String jobPosition){
         this.name = name;
         this.surname = surname;
+        this.jobPosition = jobPosition;
     }
     //endregion
 
