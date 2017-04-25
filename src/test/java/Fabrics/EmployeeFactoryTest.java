@@ -19,7 +19,7 @@ public class EmployeeFactoryTest {
 
 
     @Test
-    public void getEmployeeCheckIfProperClassIsCreated() throws Exception {
+    public void getEmployeeCheckIfProperClassIsCreated() {
         //Given
         Employee manager;
         Employee ordinaryEmployee;
@@ -34,10 +34,10 @@ public class EmployeeFactoryTest {
     }
 
     @Test
-    public void getEmployeeCheckIfProperClassIsCreatedWhenNotEnoughDataPassed() throws Exception {
+    public void getEmployeeCheckIfProperClassIsCreatedWhenNotEnoughDataPassed() {
         //Given
         Employee ordinaryEmployee;
-        HashMap<String, String> data = new HashMap<String, String>(){{
+        HashMap<String, String> data = new HashMap<String, String>() {{
             put("name", "Jan");
             put("surname", "Kowalski");
         }};
@@ -50,11 +50,11 @@ public class EmployeeFactoryTest {
     }
 
     @Test
-    public void getEmployeeCheckIfClassContainsFieldsWhenEnoughDataPassed() throws Exception {
+    public void getEmployeeCheckIfClassContainsFieldsWhenEnoughDataPassed() {
         //Given
         Employee manager;
         String expectedName = "Jan", expectedSurname = "Kowalski", expectedJobTitle = "Manager";
-        HashMap<String, String> data = new HashMap<String, String>(){{
+        HashMap<String, String> data = new HashMap<String, String>() {{
             put("name", expectedName);
             put("surname", expectedSurname);
             put("jobPosition", expectedJobTitle);
@@ -65,6 +65,17 @@ public class EmployeeFactoryTest {
         //Then
         assertThat(manager).extracting("name", "surname", "jobPosition")
                 .contains(expectedName, expectedSurname, expectedJobTitle);
+    }
+
+    @Test
+    public void getEmployeeCheckIfNullWhenNoEnumEquivalentClassExist() {
+        //Given
+        Employee manager;
+        //When
+        manager = EmployeeFactory.getEmployee(EmployeeType.None, null);
+
+        //Then
+        assertThat(manager).isNull();
     }
 
 }
