@@ -5,9 +5,20 @@ package Model;
  */
 public class OrdinaryEmployee extends Employee{
 
+
+
+    //region Constructors
+    public OrdinaryEmployee(String name, String surname){
+        super(name, surname);
+    }
+    //endregion
+
+    //region Methods
     @Override
-    public void displayClassName() {
-        super.displayClassName();
+    public void display() {
+        super.display();
         System.out.println("Ordinary Employee");
     }
+    //endregion
+
 }
