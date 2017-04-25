@@ -95,6 +95,7 @@ public class Company {
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", phone='" + phone + '\'' +
+                ", ceo=" + ceo +
                 ", departments=" + departments +
                 '}';
     }
