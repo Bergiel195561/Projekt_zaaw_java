@@ -21,6 +21,8 @@ public class Manager extends Employee {
     //endregion
 
     //region Constructors
+
+    public Manager(){}
     public Manager(String name, String surname){
         super(name, surname);
     }

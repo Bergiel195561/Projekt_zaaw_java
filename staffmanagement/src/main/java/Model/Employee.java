@@ -35,6 +35,7 @@ public abstract class Employee {
     //endregion
 
     //region Constructors
+    public Employee(){}
     public Employee(String name, String surname){
         this.name = name;
         this.surname = surname;
