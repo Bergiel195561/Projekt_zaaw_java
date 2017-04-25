@@ -13,7 +13,8 @@ import java.util.HashMap;
 public class EmployeeFactory {
 
     public static Employee getEmployee(EmployeeType employeeType, HashMap<String, String> dataMap){
-        if(dataMap.containsKey("name") && dataMap.containsKey("surname") && dataMap.containsKey("jobPosition")){
+
+        if(dataMap != null && dataMap.containsKey("name") && dataMap.containsKey("surname") && dataMap.containsKey("jobPosition")){
             switch(employeeType){
 
                 case OrdinaryEmployee:

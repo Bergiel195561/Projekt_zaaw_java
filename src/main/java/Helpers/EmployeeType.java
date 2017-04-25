@@ -8,5 +8,6 @@ package Helpers;
 
 public enum EmployeeType {
     OrdinaryEmployee,
-    Manager
+    Manager,
+    None
 }
