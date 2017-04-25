@@ -1,6 +1,7 @@
 package Model;
 
 /**
+ * @author Jaromir
  * Created by apple on 25/04/17.
  */
 public class Manager extends Employee {

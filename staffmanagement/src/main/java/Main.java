@@ -1,6 +1,7 @@
 import Model.Manager;
 
 /**
+ * @author Jaromir
  * Created by apple on 25/04/17.
  */
 public class Main {
