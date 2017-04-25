@@ -1,5 +1,6 @@
 package Model;
 
+import Helpers.DepartmentType;
 import Utils.CustomHashSet;
 
 import java.util.HashSet;
@@ -11,17 +12,17 @@ import java.util.Set;
  * @author krystian
  */
 public class Department {
-    private String name;
+    private DepartmentType type;
     private Manager departmentLeader;
     private CustomHashSet<OrdinaryEmployee> departmentMembers = new CustomHashSet<OrdinaryEmployee>();
 
-    public Department(String name) {
-        this.name = name;
+    public Department(DepartmentType type) {
+        this.type = type;
     }
 
     //region Setters
-    public void setName(String name) {
-        this.name = name;
+    public void setType(DepartmentType type) {
+        this.type = type;
     }
 
     public void setDepartmentLeader(Manager departmentLeader) {
@@ -38,8 +39,8 @@ public class Department {
     //endregion
 
     //region Getters
-    public String getName() {
-        return name;
+    public DepartmentType getType() {
+        return type;
     }
 
     public Manager getDepartmentLeader() {
@@ -53,6 +54,6 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department{name='" + name + "}";
+        return "Department{name='" + type + "}";
     }
 }
