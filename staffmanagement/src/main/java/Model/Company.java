@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Klasa przechowujące podstawowe dane o firmie wraz z jej działami
+ *
  * @author krystian
  */
 public class Company {
@@ -12,13 +13,14 @@ public class Company {
     private String street;
     private String city;
     private String phone;
-    private List<ArrayList> departments;
+    private List<Department> departments;
 
     public Company() {
-
+        this.departments = new ArrayList<Department>();
     }
 
-    public Company(String name, String street, String city, String phone, List<ArrayList> departments) {
+    public Company(String name, String street, String city, String phone, List<Department> departments) {
+        this();
         this.name = name;
         this.street = street;
         this.city = city;
@@ -43,8 +45,12 @@ public class Company {
         this.phone = phone;
     }
 
-    public void setDepartments(List<ArrayList> departments) {
+    public void setDepartments(List<Department> departments) {
         this.departments = departments;
+    }
+
+    public void addDepartment(Department department) {
+        this.departments.add(department);
     }
     //endregion
 
@@ -66,7 +72,7 @@ public class Company {
         return phone;
     }
 
-    public List<ArrayList> getDepartments() {
+    public List<Department> getDepartments() {
         return departments;
     }
     //endregion
