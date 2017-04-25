@@ -13,6 +13,7 @@ public class Company {
     private String street;
     private String city;
     private String phone;
+    private Manager ceo;
     private List<Department> departments;
 
     public Company() {
@@ -49,9 +50,14 @@ public class Company {
         this.departments = departments;
     }
 
+    public void setCeo(Manager ceo) {
+        this.ceo = ceo;
+    }
+
     public void addDepartment(Department department) {
         this.departments.add(department);
     }
+
     //endregion
 
 
@@ -74,6 +80,10 @@ public class Company {
 
     public List<Department> getDepartments() {
         return departments;
+    }
+
+    public Manager getCeo() {
+        return ceo;
     }
     //endregion
 
