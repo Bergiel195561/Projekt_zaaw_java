@@ -20,7 +20,7 @@ public class OrdinaryEmployee extends Employee{
 
     @Override
     public String toString() {
-        return super.toString() + "Ordinary Employee";
+        return super.toString() + "Ordinary employee ["+ this.getName()+" "+this.getSurname() +"]";
     }
 
     //endregion

@@ -32,7 +32,7 @@ public class Manager extends Employee {
 
     @Override
     public String toString() {
-        return super.toString() + "Manager";
+        return super.toString() + "Manager ["+ this.getName()+" "+this.getSurname() +"]";
     }
 
     //endregion
