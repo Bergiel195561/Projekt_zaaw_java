@@ -3,8 +3,10 @@ package Model;
 import java.util.Date;
 
 /**
- * Created by apple on 25/04/17.
+ * Klasa abstrakcyjna modelu pracownika
+ * @author Jaromir
  */
+
 public abstract class Employee {
 
     protected String name;

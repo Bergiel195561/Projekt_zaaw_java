@@ -1,8 +1,8 @@
 package Model;
 
 /**
+ * Klasa zwykłego pracownika dziedzicząca po abstrakcyjnej klasie pracownika
  * @author Jaromir
- * Created by apple on 25/04/17.
  */
 public class OrdinaryEmployee extends Employee{
 

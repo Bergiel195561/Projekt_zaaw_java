@@ -1,9 +1,11 @@
 package Model;
 
+
 /**
+ * Klasa dyrektora dziedzicząca po abstrakcyjnej klasie pracownika
  * @author Jaromir
- * Created by apple on 25/04/17.
  */
+
 public class Manager extends Employee {
 
     private int companyId;
