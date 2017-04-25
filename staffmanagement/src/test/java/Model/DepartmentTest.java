@@ -20,14 +20,16 @@ public class DepartmentTest {
     @Test
     public void addMemberToDepartment() {
         // When
-        OrdinaryEmployee employee = new OrdinaryEmployee("Name", "Surname");
         int expectedMembersCount = 1;
+        String expectedMemberName = "Name";
+        OrdinaryEmployee employee = new OrdinaryEmployee(expectedMemberName, "Surname");
 
         // Given
         department.addDepartmentMember(employee);
 
         // Then
         assertEquals(department.getDepartmentMembers().size(), expectedMembersCount);
+        assertEquals(department.getDepartmentMembers().get(0).getName(), expectedMemberName);
     }
 
 }
