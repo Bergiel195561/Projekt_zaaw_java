@@ -1,5 +1,6 @@
 package Model;
 
+import Helpers.TeamType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,18 +19,18 @@ public class DepartmentTest {
     }
 
     @Test
-    public void addMemberToDepartment() {
+    public void addTeam() {
         // When
-        int expectedMembersCount = 1;
-        String expectedMemberName = "Name";
-        OrdinaryEmployee employee = new OrdinaryEmployee(expectedMemberName, "Surname");
+        int expectedTeamCount = 1;
+        TeamType expectedTeamType = TeamType.DEV;
+        Team team = new Team(expectedTeamType);
 
         // Given
-        department.addDepartmentMember(employee);
+        department.addTeam(team);
 
         // Then
-        assertEquals(department.getDepartmentMembers().size(), expectedMembersCount);
-        assertEquals(department.getDepartmentMembers().get(0).getName(), expectedMemberName);
+        assertEquals(department.getTeams().size(), expectedTeamCount);
+        assertEquals(department.getTeams().get(0).getType(), expectedTeamType);
     }
 
 }

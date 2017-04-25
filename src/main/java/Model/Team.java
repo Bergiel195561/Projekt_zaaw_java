@@ -15,6 +15,10 @@ public class Team {
     public Team() {
     }
 
+    public Team(TeamType type) {
+        this.type = type;
+    }
+
     public Team(TeamType type, Manager departmentLeader, CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.type = type;
         this.departmentLeader = departmentLeader;
