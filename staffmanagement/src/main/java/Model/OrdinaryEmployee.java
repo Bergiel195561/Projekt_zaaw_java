@@ -9,9 +9,10 @@ public class OrdinaryEmployee extends Employee {
 
 
     //region Constructors
+    public OrdinaryEmployee() {}
     public OrdinaryEmployee(String name, String surname) {
+        super(name, surname);
     }
-
     public OrdinaryEmployee(String name, String surname, String jobPosition) {
         super(name, surname, jobPosition);
     }

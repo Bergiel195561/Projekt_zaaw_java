@@ -23,6 +23,9 @@ public class Manager extends Employee {
     //region Constructors
 
     public Manager(){}
+    public Manager(String name, String surname){
+        super(name, surname);
+    }
     public Manager(String name, String surname, String jobPosition){
         super(name, surname, jobPosition);
     }
