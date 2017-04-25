@@ -1,5 +1,7 @@
 package Model;
 
+import Utils.CustomHashSet;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +13,7 @@ import java.util.Set;
 public class Department {
     private String name;
     private Manager departmentLeader;
-    private Set<OrdinaryEmployee> departmentMembers = new HashSet<OrdinaryEmployee>();
+    private CustomHashSet<OrdinaryEmployee> departmentMembers = new CustomHashSet<OrdinaryEmployee>();
 
     public Department(String name) {
         this.name = name;
@@ -26,7 +28,7 @@ public class Department {
         this.departmentLeader = departmentLeader;
     }
 
-    public void setDepartmentMembers(Set<OrdinaryEmployee> departmentMembers) {
+    public void setDepartmentMembers(CustomHashSet<OrdinaryEmployee> departmentMembers) {
         this.departmentMembers = departmentMembers;
     }
 
@@ -44,7 +46,7 @@ public class Department {
         return departmentLeader;
     }
 
-    public Set<OrdinaryEmployee> getDepartmentMembers() {
+    public CustomHashSet<OrdinaryEmployee> getDepartmentMembers() {
         return departmentMembers;
     }
     //endregion
