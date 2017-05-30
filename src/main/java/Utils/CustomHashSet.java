@@ -18,6 +18,7 @@ public class CustomHashSet<T> extends LinkedHashSet<T> {
         int i = 0;
         while (iterator.hasNext() && i <= index) {
             elementAtIndex = (T) iterator.next();
+            i++;
         }
         return elementAtIndex;
     }
