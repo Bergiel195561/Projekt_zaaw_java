@@ -2,13 +2,23 @@ package Model;
 
 import Helpers.TeamType;
 import Utils.CustomHashSet;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  * Klasa odpowiedzialna za zespół pracowników w danym dziale
  * @author krystian
  */
+@Entity(noClassnameStored = true)
 public class Team {
+    @Id
+    private ObjectId id;
+
     private TeamType type;
+
+    @Reference
     private Manager departmentLeader;
     private CustomHashSet<OrdinaryEmployee> teamMembers = new CustomHashSet<OrdinaryEmployee>();
 

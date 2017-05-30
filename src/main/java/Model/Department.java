@@ -1,16 +1,29 @@
 package Model;
 
 import Utils.CustomHashSet;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.*;
 
 /**
  * Klasa odpowiedzialna za dział w firmie
  *
  * @author krystian
  */
+@Entity(noClassnameStored = true)
 public class Department {
+    @Id
+    private ObjectId id = new ObjectId();
+
+    @Indexed(options = @IndexOptions(unique = true))
     private String name;
+
+    @Reference
     private Manager departmentLeader;
+
+    @Reference
     private CustomHashSet<Team> teams = new CustomHashSet<Team>();
+
+    public Department(){}
 
     public Department(String name) {
         this.name = name;

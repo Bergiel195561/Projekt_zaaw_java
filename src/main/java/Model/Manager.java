@@ -1,24 +1,27 @@
 package Model;
 
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 /**
  * Klasa dyrektora dziedzicząca po abstrakcyjnej klasie pracownika
  * @author Jaromir
  */
 
+@Entity(noClassnameStored = true)
 public class Manager extends Employee {
+    @Id
+    private ObjectId id;
 
-    private int companyId;
+    public ObjectId getId() {
+        return id;
+    }
 
-    //region Setters
-    public void setCompanyId(int companyId) {this.companyId = companyId;}
-    //endregion
-
-
-
-    //region Getters
-    public int getCompanyId() {return companyId;}
-    //endregion
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
     //region Constructors
 

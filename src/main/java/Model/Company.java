@@ -14,7 +14,7 @@ import java.util.List;
 @Entity(noClassnameStored = true)
 public class Company {
     @Id
-    private ObjectId id;
+    private ObjectId id = new ObjectId();
 
     @Indexed(options = @IndexOptions(unique = true))
     private String name;
@@ -22,10 +22,10 @@ public class Company {
     private String city;
     private String phone;
 
-//    @Reference
+    @Reference
     private Manager ceo;
 
-//    @Reference
+    @Reference
     private List<Department> departments;
 
     public Company() {
