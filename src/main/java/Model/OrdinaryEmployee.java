@@ -1,10 +1,13 @@
 package Model;
 
+import org.mongodb.morphia.annotations.Entity;
+
 /**
  * Klasa zwykłego pracownika dziedzicząca po abstrakcyjnej klasie pracownika
  *
  * @author Jaromir
  */
+@Entity(noClassnameStored = true)
 public class OrdinaryEmployee extends Employee {
 
 

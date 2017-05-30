@@ -20,6 +20,8 @@ public class Team {
 
     @Reference
     private Manager departmentLeader;
+
+    @Reference
     private CustomHashSet<OrdinaryEmployee> teamMembers = new CustomHashSet<OrdinaryEmployee>();
 
     public Team() {

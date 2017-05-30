@@ -1,5 +1,8 @@
 package Model;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Id;
+
 import java.util.Date;
 
 /**
@@ -8,6 +11,8 @@ import java.util.Date;
  */
 
 public abstract class Employee {
+    @Id
+    private ObjectId id = new ObjectId();
 
     protected String name;
     protected String surname;
