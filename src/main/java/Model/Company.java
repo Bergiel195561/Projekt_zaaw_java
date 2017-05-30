@@ -1,8 +1,7 @@
 package Model;
 
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +16,16 @@ public class Company {
     @Id
     private ObjectId id;
 
+    @Indexed(options = @IndexOptions(unique = true))
     private String name;
     private String street;
     private String city;
     private String phone;
+
+//    @Reference
     private Manager ceo;
+
+//    @Reference
     private List<Department> departments;
 
     public Company() {
