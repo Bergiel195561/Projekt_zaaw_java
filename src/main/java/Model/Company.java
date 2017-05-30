@@ -1,5 +1,9 @@
 package Model;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +12,11 @@ import java.util.List;
  *
  * @author krystian
  */
+@Entity(noClassnameStored = true)
 public class Company {
+    @Id
+    private ObjectId id;
+
     private String name;
     private String street;
     private String city;

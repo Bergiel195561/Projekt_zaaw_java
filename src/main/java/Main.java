@@ -5,6 +5,7 @@ import Command.HelpCommand;
 import Command.PrintCommand;
 import Command.AddCompanyCommand;
 import Command.InfoCommand;
+import DB.MongoConnector;
 
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class Main {
     private CommandResolver commandResolver;
 
     public static void main(String[] args) {
-
+        MongoConnector m = new MongoConnector();
         Main main = new Main(new ApplicationCore(), new CommandResolver());
         main.start(args);
 
