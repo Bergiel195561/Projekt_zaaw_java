@@ -14,14 +14,14 @@ public class EmployeeFactory {
 
     public static Employee getEmployee(EmployeeType employeeType, HashMap<String, String> dataMap){
 
-        if(dataMap != null && dataMap.containsKey("name") && dataMap.containsKey("surname") && dataMap.containsKey("jobPosition")){
+        if(dataMap != null && dataMap.containsKey("name") && dataMap.containsKey("surname") && dataMap.containsKey("jobPosition") && dataMap.containsKey("humanId")){
             switch(employeeType){
 
                 case OrdinaryEmployee:
-                    return new OrdinaryEmployee(dataMap.get("name"), dataMap.get("surname"), dataMap.get("jobPosition"));
+                    return new OrdinaryEmployee(dataMap.get("name"), dataMap.get("surname"), dataMap.get("jobPosition"), dataMap.get("humanId"));
 
                 case Manager:
-                    return new Manager(dataMap.get("name"), dataMap.get("surname"), dataMap.get("jobPosition"));
+                    return new Manager(dataMap.get("name"), dataMap.get("surname"), dataMap.get("jobPosition"), dataMap.get("humanId"));
 
                 default:
                     break;
