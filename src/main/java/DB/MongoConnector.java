@@ -31,4 +31,8 @@ public class MongoConnector {
             logger.log(Level.WARNING, e.getMessage());
         }
     }
+
+    public Datastore getDatastore() {
+        return datastore;
+    }
 }

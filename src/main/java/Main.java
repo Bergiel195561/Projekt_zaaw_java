@@ -5,7 +5,9 @@ import Command.HelpCommand;
 import Command.PrintCommand;
 import Command.AddCompanyCommand;
 import Command.InfoCommand;
+import DB.CompanyDao;
 import DB.MongoConnector;
+import Model.Company;
 
 import java.util.Scanner;
 
