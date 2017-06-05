@@ -12,12 +12,15 @@ public class OrdinaryEmployee extends Employee {
 
 
     //region Constructors
-    public OrdinaryEmployee() {}
-    public OrdinaryEmployee(String name, String surname) {
-        super(name, surname);
+    public OrdinaryEmployee() {
     }
-    public OrdinaryEmployee(String name, String surname, String jobPosition) {
-        super(name, surname, jobPosition);
+
+    public OrdinaryEmployee(String name, String surname, String humanId) {
+        super(name, surname, humanId);
+    }
+
+    public OrdinaryEmployee(String name, String surname, String jobPosition, String humanId) {
+        super(name, surname, jobPosition, humanId);
     }
     //endregion
 

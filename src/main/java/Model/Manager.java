@@ -7,6 +7,7 @@ import org.mongodb.morphia.annotations.Id;
 
 /**
  * Klasa dyrektora dziedzicząca po abstrakcyjnej klasie pracownika
+ *
  * @author Jaromir
  */
 
@@ -15,12 +16,15 @@ public class Manager extends Employee {
 
     //region Constructors
 
-    public Manager(){}
-    public Manager(String name, String surname){
-        super(name, surname);
+    public Manager() {
     }
-    public Manager(String name, String surname, String jobPosition){
-        super(name, surname, jobPosition);
+
+    public Manager(String name, String surname, String humanId) {
+        super(name, surname, humanId);
+    }
+
+    public Manager(String name, String surname, String jobPosition, String humanId) {
+        super(name, surname, jobPosition, humanId);
     }
     //endregion
 
@@ -28,7 +32,7 @@ public class Manager extends Employee {
 
     @Override
     public String toString() {
-        return super.toString() + this.jobPosition + " ["+ this.getName()+" "+this.getSurname() +"]";
+        return super.toString() + this.jobPosition + " [" + this.getName() + " " + this.getSurname() + "]";
     }
 
     //endregion

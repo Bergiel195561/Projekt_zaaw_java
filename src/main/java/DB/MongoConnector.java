@@ -1,21 +1,14 @@
 package DB;
 
-import Helpers.TeamType;
-import Model.Company;
-import Model.Department;
-import Model.Team;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.logging.LoggerFactory;
-import org.python.jline.internal.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Klasa stanowiąca inicjalizator połączenia do MongoDB
  * @author krystian
  */
 public class MongoConnector {

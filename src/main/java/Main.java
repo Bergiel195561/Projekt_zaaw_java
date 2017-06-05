@@ -22,13 +22,6 @@ public class Main {
         MongoConnector m = new MongoConnector();
         Main main = new Main(new ApplicationCore(), new CommandResolver());
         main.start(args);
-
-//        Employee employee1 = EmployeeFactory.getEmployee(EmployeeType.OrdinaryEmployee);
-//        Employee employee2 = EmployeeFactory.getEmployee(EmployeeType.Manager);
-
-//        System.out.println(employee1.toString());
-//        System.out.println(employee2.toString());
-
     }
 
     public Main(ApplicationCore core, CommandResolver commandResolver) {
