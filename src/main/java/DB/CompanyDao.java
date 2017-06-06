@@ -13,8 +13,8 @@ import org.mongodb.morphia.query.Query;
  */
 public class CompanyDao extends BasicDAO<Company, String> {
 
-    public CompanyDao(Class<Company> entityClass, Datastore ds) {
-        super(entityClass, ds);
+    protected CompanyDao(Datastore ds) {
+        super(ds);
     }
 
     /**

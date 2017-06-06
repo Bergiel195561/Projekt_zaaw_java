@@ -22,6 +22,7 @@ public class Main {
 
     public static void main(String[] args) {
         MongoConnector m = new MongoConnector();
+
         Main main = new Main(new ApplicationCore(), new CommandResolver());
         main.start(args);
     }

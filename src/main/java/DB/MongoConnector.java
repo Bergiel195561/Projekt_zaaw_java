@@ -14,13 +14,21 @@ import java.util.logging.Logger;
 public class MongoConnector {
 
     private static Logger logger = Logger.getLogger(MongoConnector.class.getName());
-    final String DB_NAME = "java2017";
+    public static String DB_NAME = "java2017";
     final Morphia morphia = new Morphia();
     public final Datastore datastore = morphia.createDatastore(new MongoClient(), DB_NAME);
 
     public MongoConnector() {
         morphia.mapPackage("Model");
         datastore.ensureIndexes();
+    }
+
+    public static void setDbNameForDefault(){
+        DB_NAME = "java2017";
+    }
+
+    public static void setDbName(String dbName){
+        DB_NAME = dbName;
     }
 
     public <T extends Object> void save(T object) {
