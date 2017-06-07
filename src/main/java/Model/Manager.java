@@ -1,33 +1,30 @@
 package Model;
 
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 /**
  * Klasa dyrektora dziedzicząca po abstrakcyjnej klasie pracownika
+ *
  * @author Jaromir
  */
 
+@Entity(noClassnameStored = true)
 public class Manager extends Employee {
-
-    private int companyId;
-
-    //region Setters
-    public void setCompanyId(int companyId) {this.companyId = companyId;}
-    //endregion
-
-
-
-    //region Getters
-    public int getCompanyId() {return companyId;}
-    //endregion
 
     //region Constructors
 
-    public Manager(){}
-    public Manager(String name, String surname){
-        super(name, surname);
+    public Manager() {
     }
-    public Manager(String name, String surname, String jobPosition){
-        super(name, surname, jobPosition);
+
+    public Manager(String name, String surname, String humanId) {
+        super(name, surname, humanId);
+    }
+
+    public Manager(String name, String surname, String jobPosition, String humanId) {
+        super(name, surname, jobPosition, humanId);
     }
     //endregion
 
@@ -35,7 +32,7 @@ public class Manager extends Employee {
 
     @Override
     public String toString() {
-        return super.toString() + this.jobPosition + " ["+ this.getName()+" "+this.getSurname() +"]";
+        return super.toString() + this.jobPosition + " [" + this.getName() + " " + this.getSurname() + "]";
     }
 
     //endregion

@@ -5,6 +5,9 @@ import Command.HelpCommand;
 import Command.PrintCommand;
 import Command.AddCompanyCommand;
 import Command.InfoCommand;
+import DB.CompanyDao;
+import DB.MongoConnector;
+import Model.Company;
 
 import java.util.Scanner;
 
@@ -18,16 +21,10 @@ public class Main {
     private CommandResolver commandResolver;
 
     public static void main(String[] args) {
+        MongoConnector m = new MongoConnector();
 
         Main main = new Main(new ApplicationCore(), new CommandResolver());
         main.start(args);
-
-//        Employee employee1 = EmployeeFactory.getEmployee(EmployeeType.OrdinaryEmployee);
-//        Employee employee2 = EmployeeFactory.getEmployee(EmployeeType.Manager);
-
-//        System.out.println(employee1.toString());
-//        System.out.println(employee2.toString());
-
     }
 
     public Main(ApplicationCore core, CommandResolver commandResolver) {

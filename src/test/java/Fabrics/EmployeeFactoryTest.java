@@ -40,6 +40,7 @@ public class EmployeeFactoryTest {
         HashMap<String, String> data = new HashMap<String, String>() {{
             put("name", "Jan");
             put("surname", "Kowalski");
+            put("humanId", "111222");
         }};
 
         //When
@@ -53,18 +54,19 @@ public class EmployeeFactoryTest {
     public void getEmployeeCheckIfClassContainsFieldsWhenEnoughDataPassed() {
         //Given
         Employee manager;
-        String expectedName = "Jan", expectedSurname = "Kowalski", expectedJobTitle = "Manager";
+        String expectedName = "Jan", expectedSurname = "Kowalski", expectedJobTitle = "Manager", expectedHumanId = "123123";
         HashMap<String, String> data = new HashMap<String, String>() {{
             put("name", expectedName);
             put("surname", expectedSurname);
             put("jobPosition", expectedJobTitle);
+            put("humanId", expectedHumanId);
         }};
         //When
         manager = EmployeeFactory.getEmployee(EmployeeType.Manager, data);
 
         //Then
-        assertThat(manager).extracting("name", "surname", "jobPosition")
-                .contains(expectedName, expectedSurname, expectedJobTitle);
+        assertThat(manager).extracting("name", "surname", "jobPosition", "humanId")
+                .contains(expectedName, expectedSurname, expectedJobTitle, expectedHumanId);
     }
 
     @Test
