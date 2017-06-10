@@ -97,13 +97,18 @@ public class Company {
     public Manager getCeo() {
         return ceo;
     }
+
+    public ObjectId getId() {
+        return id;
+    }
     //endregion
 
 
     @Override
     public String toString() {
         return "Company{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", phone='" + phone + '\'' +

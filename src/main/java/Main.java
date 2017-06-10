@@ -5,9 +5,10 @@ import Command.HelpCommand;
 import Command.PrintCommand;
 import Command.AddCompanyCommand;
 import Command.InfoCommand;
-import DB.CompanyDao;
+import Command.GetFromDBCommand;
+import Command.SaveToDBCommand;
+
 import DB.MongoConnector;
-import Model.Company;
 
 import java.util.Scanner;
 
@@ -19,20 +20,23 @@ public class Main {
 
     private ApplicationCore core;
     private CommandResolver commandResolver;
+    private MongoConnector mongoConnector;
 
     public static void main(String[] args) {
-        MongoConnector m = new MongoConnector();
-
-        Main main = new Main(new ApplicationCore(), new CommandResolver());
+        MongoConnector.setDbNameForDefault();
+        Main main = new Main(new ApplicationCore(), new CommandResolver(), new MongoConnector());
         main.start(args);
     }
 
-    public Main(ApplicationCore core, CommandResolver commandResolver) {
+    public Main(ApplicationCore core, CommandResolver commandResolver, MongoConnector mongoConnector) {
         this.core = core;
         this.commandResolver = commandResolver;
+        this.mongoConnector = mongoConnector;
     }
 
     private void init() {
+        commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
+        commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new AddCompanyCommand(core));
         commandResolver.registerCommand(new InfoCommand());
         commandResolver.registerCommand(new PrintCommand(core));
