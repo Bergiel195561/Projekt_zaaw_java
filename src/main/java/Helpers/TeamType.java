@@ -7,6 +7,4 @@ package Helpers;
 
 public enum TeamType {
     DEV, QA, UX, TESTERS, ADV
-
-
 }
