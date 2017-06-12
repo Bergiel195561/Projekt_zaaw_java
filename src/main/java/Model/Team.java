@@ -61,6 +61,23 @@ public class Team {
         return type;
     }
 
+    public String getTypeDescription() {
+        switch(this.type){
+            case ADV:
+                return "ADV";
+            case DEV:
+                return "DEV";
+            case QA:
+                return "QA";
+            case TESTERS:
+                return "TESTERS";
+            case UX:
+                return "UX";
+            default:
+                return "Not identified";
+        }
+    }
+
     public Manager getDepartmentLeader() {
         return departmentLeader;
     }

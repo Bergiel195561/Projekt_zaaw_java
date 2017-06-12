@@ -24,4 +24,17 @@ public class CompanyStatistics {
         }
         return employees.size();
     }
+
+    public static String getWholeCompanyDescription(Company company){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Company "+ company.getName() + "\n");
+        for (Department dep: company.getDepartments()) {
+            builder.append("\n Department " + dep.getName() + "\n");
+            for (Team team: dep.getTeams() ){
+                builder.append("\t Team " + team.getTypeDescription() + " " + team.getTeamMembers().size() + " pracownik\\ów" + "\n");
+            }
+        }
+        return builder.toString();
+    }
+
 }
