@@ -33,6 +33,7 @@ public class CurrencyInfoService {
         return str.substring(0, str.length() - 1);
     }
 
+
     /**
      * Tworzenie listy symboli dla których pokazać wartość bazowej waluty
      * @param baseType Bazowy typ waluty, nie występuje w zwracanej wartości
@@ -66,7 +67,8 @@ public class CurrencyInfoService {
                 String responseBody = EntityUtils.toString(response.getEntity(), "UTF-8");
                 JsonNode responseJson = objectMapper.readTree(responseBody);
 
-                System.out.println(responseJson);
+                CurrencyModel currencyModel = new CurrencyModel(responseJson);
+                System.out.println(currencyModel);
 
             } else {
                 System.out.println(
