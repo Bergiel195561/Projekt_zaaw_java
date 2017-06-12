@@ -8,6 +8,10 @@ import Model.Team;
 import org.assertj.core.api.Fail;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
@@ -71,7 +75,46 @@ public class CompanyStatisticsTest {
         description = CompanyStatistics.getWholeCompanyDescription(company);
         //then
         assertThat(description).isNotNull();
-        System.out.println(description);
     }
+
+    @Test
+    public void getWholeCompanyDescriptionShouldContainDepName(){
+        //given
+        String description;
+        String expectedDepartmentName = "IT";
+        //when
+        description = CompanyStatistics.getWholeCompanyDescription(company);
+        //then
+        assertThat(description).contains(expectedDepartmentName);
+    }
+
+    @Test
+    public void getWholeCompanyDescriptionShouldContainSequence(){
+        //given
+        String description;
+        String expectedDepartmentName = "IT";
+        String expectedTeamName = "DEV";
+        String expectedTeamName1 = "TESTERS";
+        //when
+        description = CompanyStatistics.getWholeCompanyDescription(company);
+        //then
+        assertThat(description).containsSequence(expectedDepartmentName, expectedTeamName, expectedTeamName1);
+    }
+    
+    @Test(expected = AssertionError.class)
+    public void getWholeCompanyDescriptionShouldFail(){
+        //given
+        String description;
+        String expectedDepartmentName = "Marketing";
+        String expectedTeamName = "DEV";
+        String expectedTeamName1 = "TESTERS";
+        //when
+        description = CompanyStatistics.getWholeCompanyDescription(company);
+        //then
+        assertThat(description).containsSequence(expectedDepartmentName, expectedTeamName, expectedTeamName1);
+
+    }
+
+
 
 }
