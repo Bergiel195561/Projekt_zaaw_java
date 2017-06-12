@@ -3,23 +3,24 @@ package Model;
 import Helpers.TeamType;
 import Utils.CustomHashSet;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.*;
 
 /**
  * Klasa odpowiedzialna za zespół pracowników w danym dziale
+ *
  * @author krystian
  */
 @Entity(noClassnameStored = true)
 public class Team {
     @Id
-    private ObjectId id;
+    private ObjectId id = new ObjectId();
 
+    @Indexed(options = @IndexOptions(unique = true))
+    private String teamId;
     private TeamType type;
 
     @Reference
-    private Manager departmentLeader;
+    private Manager teamLeader;
 
     @Reference
     private CustomHashSet<OrdinaryEmployee> teamMembers = new CustomHashSet<OrdinaryEmployee>();
@@ -31,9 +32,8 @@ public class Team {
         this.type = type;
     }
 
-    public Team(TeamType type, Manager departmentLeader, CustomHashSet<OrdinaryEmployee> teamMembers) {
+    public Team(TeamType type, CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.type = type;
-        this.departmentLeader = departmentLeader;
         this.teamMembers = teamMembers;
     }
 
@@ -42,12 +42,20 @@ public class Team {
         this.type = type;
     }
 
-    public void setDepartmentLeader(Manager departmentLeader) {
-        this.departmentLeader = departmentLeader;
-    }
-
     public void setTeamMembers(CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public void setTeamLeader(Manager teamLeader) {
+        this.teamLeader = teamLeader;
     }
     //endregion
 
@@ -56,12 +64,16 @@ public class Team {
         return type;
     }
 
-    public Manager getDepartmentLeader() {
-        return departmentLeader;
-    }
-
     public CustomHashSet<OrdinaryEmployee> getTeamMembers() {
         return teamMembers;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public Manager getTeamLeader() {
+        return teamLeader;
     }
     //endregion
 
@@ -69,9 +81,9 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "id=" + id +
+                "teamId='" + teamId + '\'' +
                 ", type=" + type +
-                ", departmentLeader=" + departmentLeader +
+                ", teamLeader=" + teamLeader +
                 ", teamMembers=" + teamMembers +
                 '}';
     }

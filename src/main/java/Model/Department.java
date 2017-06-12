@@ -18,9 +18,6 @@ public class Department {
     private String name;
 
     @Reference
-    private Manager departmentLeader;
-
-    @Reference
     private CustomHashSet<Team> teams = new CustomHashSet<Team>();
 
     public Department(){}
@@ -32,10 +29,6 @@ public class Department {
     //region Setters
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDepartmentLeader(Manager departmentLeader) {
-        this.departmentLeader = departmentLeader;
     }
 
     public void setTeams(CustomHashSet<Team> teams) {
@@ -50,10 +43,6 @@ public class Department {
     //region Getters
     public String getName() {
         return name;
-    }
-
-    public Manager getDepartmentLeader() {
-        return departmentLeader;
     }
 
     public CustomHashSet<Team> getTeams() {

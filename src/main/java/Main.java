@@ -9,8 +9,10 @@ import Command.GetFromDBCommand;
 import Command.SaveToDBCommand;
 import Command.AddEmployeeCommand;
 import Command.AddManagerCommand;
-import Command.SetManagerCommand;
 import Command.AddTeamCommand;
+import Command.SetCompanyManagerCommand;
+import Command.SetEmployeeCommand;
+import Command.SetTeamManagerCommand;
 
 
 import DB.MongoConnector;
@@ -43,8 +45,10 @@ public class Main {
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new AddManagerCommand(core));
-        commandResolver.registerCommand(new SetManagerCommand(core));
+        commandResolver.registerCommand(new SetCompanyManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));
+        commandResolver.registerCommand(new SetEmployeeCommand(core));
+        commandResolver.registerCommand(new SetTeamManagerCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
         commandResolver.registerCommand(new AddTeamCommand(core));
         commandResolver.registerCommand(new InfoCommand());

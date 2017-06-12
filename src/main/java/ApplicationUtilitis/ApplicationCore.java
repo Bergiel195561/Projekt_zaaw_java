@@ -54,6 +54,10 @@ public class ApplicationCore {
         employees.add(employee);
     }
 
+    public void addOrdinaryEmployee(OrdinaryEmployee ordinaryEmployee) {
+        ordinaryEmployees.add(ordinaryEmployee);
+    }
+
     public void addManager(Manager manager) {
         managers.add(manager);
     }

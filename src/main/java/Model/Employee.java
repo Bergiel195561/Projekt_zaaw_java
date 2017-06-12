@@ -102,13 +102,41 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
-                ", humanId='" + humanId + '\'' +
+                "humanId='" + humanId + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", jobPosition='" + jobPosition + '\'' +
                 ", salary=" + salary +
                 ", hireDate=" + hireDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (Float.compare(employee.salary, salary) != 0) return false;
+        if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
+        if (humanId != null ? !humanId.equals(employee.humanId) : employee.humanId != null) return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (surname != null ? !surname.equals(employee.surname) : employee.surname != null) return false;
+        if (jobPosition != null ? !jobPosition.equals(employee.jobPosition) : employee.jobPosition != null)
+            return false;
+        return hireDate != null ? hireDate.equals(employee.hireDate) : employee.hireDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (humanId != null ? humanId.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);
+        result = 31 * result + (salary != +0.0f ? Float.floatToIntBits(salary) : 0);
+        result = 31 * result + (hireDate != null ? hireDate.hashCode() : 0);
+        return result;
     }
 }

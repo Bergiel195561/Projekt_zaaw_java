@@ -1,10 +1,7 @@
 package Command;
 
 import ApplicationUtilitis.ApplicationCore;
-import Model.Company;
-import Model.Employee;
-import Model.Manager;
-import Model.Team;
+import Model.*;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
@@ -30,8 +27,8 @@ public class PrintCommand implements Command {
 
         System.out.println();
 
-        for (Employee employee : core.getEmployees()) {
-            System.out.println(employee.toString());
+        for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
+            System.out.println(ordinaryEmployee.toString());
         }
 
         System.out.println();
@@ -42,7 +39,7 @@ public class PrintCommand implements Command {
 
         System.out.println();
 
-        for (Team team: core.getTeams()) {
+        for (Team team : core.getTeams()) {
             System.out.println(team.toString());
         }
     }

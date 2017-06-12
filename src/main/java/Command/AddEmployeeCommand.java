@@ -49,7 +49,7 @@ public class AddEmployeeCommand implements Command {
         builder.setEmployeeHireDate(new Date());
 
         OrdinaryEmployee employee = builder.getEmployee();
-        core.addEmployee(employee);
+        core.addOrdinaryEmployee(employee);
     }
 
     @Override
