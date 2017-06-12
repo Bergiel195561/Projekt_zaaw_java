@@ -53,6 +53,18 @@ public class CompanyStatistics {
 
     }
 
+    public static String listAllEmployeesFromTeam(Team team){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Employees of " + team.getTypeDescription() + " department");
+        for (OrdinaryEmployee emp: team.getTeamMembers()) {
+            builder.append("Name: " + emp.getName() + "\n");
+            builder.append("Surname: " + emp.getSurname() + "\n");
+            builder.append("Pesel: " + emp.getPesel() + "\n");
+            builder.append("----------------------------------------------");
+        }
+
+        return builder.toString();
+    }
 
 
 }

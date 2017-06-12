@@ -23,11 +23,14 @@ import static org.junit.Assert.*;
 public class CompanyStatisticsTest {
 
     private Company company;
+    private OrdinaryEmployee employeeFirst;
+    private OrdinaryEmployee employeeSecond;
+    private OrdinaryEmployee employeeThird;
     @Before
     public void setUp() throws Exception {
-        OrdinaryEmployee employeeFirst = new OrdinaryEmployee("Maciej", "Kowalski", "90080739100");
-        OrdinaryEmployee employeeSecond = new OrdinaryEmployee("Tomasz", "Zieliński", "91020739098");
-        OrdinaryEmployee employeeThird = new OrdinaryEmployee("Jakub", "Madej", "87082039098");
+        employeeFirst = new OrdinaryEmployee("Maciej", "Kowalski", "90080739100");
+        employeeSecond = new OrdinaryEmployee("Tomasz", "Zieliński", "91020739098");
+        employeeThird = new OrdinaryEmployee("Jakub", "Madej", "87082039098");
         Team teamDev = new Team(TeamType.DEV);
         Team teamTesters = new Team(TeamType.TESTERS);
         teamDev.getTeamMembers().add(employeeFirst);
@@ -117,14 +120,49 @@ public class CompanyStatisticsTest {
     }
 
     @Test
-    public void getDepartmentDescriptionShould(){
+    public void printDepartmentDescription(){
         //given
-//        Department dep = company.getDepartments().stream()
-//                .filter(d -> d.getName()).equals("IT");
+        Department dep = company.getDepartments().stream()
+                .filter(d -> d.getName().equalsIgnoreCase("IT"))
+                .findFirst().get();
         //when
         CompanyStatistics.getDepartmentDescription(company.getDepartments().get(0));
 
     }
 
+    @Test
+    public void listAllEmployeesFromTeamShouldContainEmployee(){
+        //given
+        String description;
+        String expectedEmployeeName = employeeFirst.getName();
+        String expectedEmployeeSurname = employeeFirst.getSurname();
+        String expectedEmployeePesel = employeeFirst.getPesel();
+        Team team = company.getDepartments().stream()
+                .filter(d -> d.getName().equalsIgnoreCase("IT"))
+                .findFirst().get().getTeams().stream()
+                .filter(t -> t.getType().equals(TeamType.DEV)).findFirst().get();
+        //when
+        description = CompanyStatistics.listAllEmployeesFromTeam(team);
+        //then
+        assertThat(description).containsSequence(expectedEmployeeName,expectedEmployeeSurname, expectedEmployeePesel);
+    }
 
+    @Test(expected = AssertionError.class)
+    public void listAllEmployeesFromTeamShouldNotContainEmployee(){
+        //given
+        String description;
+        String expectedEmployeeName = employeeFirst.getName();
+        String expectedEmployeeSurname = employeeFirst.getSurname();
+        String expectedEmployeePesel = employeeFirst.getPesel();
+        Team team = company.getDepartments().stream()
+                .filter(d -> d.getName().equalsIgnoreCase("IT"))
+                .findFirst().get().getTeams().stream()
+                .filter(t -> t.getType().equals(TeamType.TESTERS)).findFirst().get();
+        //when
+        description = CompanyStatistics.listAllEmployeesFromTeam(team);
+        //then
+        assertThat(description).containsSequence(expectedEmployeeName,expectedEmployeeSurname, expectedEmployeePesel);
+    }
+
+    
 }
