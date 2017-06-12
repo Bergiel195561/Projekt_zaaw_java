@@ -65,7 +65,7 @@ public class EmployeeFactoryTest {
         manager = EmployeeFactory.getEmployee(EmployeeType.Manager, data);
 
         //Then
-        assertThat(manager).extracting("name", "surname", "jobPosition", "humanId")
+        assertThat(manager).extracting("name", "surname", "jobPosition", "pesel")
                 .contains(expectedName, expectedSurname, expectedJobTitle, expectedHumanId);
     }
 
