@@ -49,6 +49,36 @@ public class Company {
     }
     //endregion
 
+    //region Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public Manager getCeo() {
+        return ceo;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+    //endregion
+
     @Override
     public String toString() {
         return "Company{" +

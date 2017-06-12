@@ -23,6 +23,7 @@ public class Main {
         this.core = core;
         this.commandResolver = commandResolver;
         this.mongoConnector = mongoConnector;
+        this.mongoConnector.setDbNameForDefault();
     }
 
     private void init() {
