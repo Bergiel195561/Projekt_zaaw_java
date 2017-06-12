@@ -30,14 +30,14 @@ public class MongoConnectorTest {
 
     @BeforeClass
     public static void initDb() {
-        MongoConnector.setDbName("Java2017_Test1");
-        mongoConnector = new MongoConnector();
+        mongoConnector = MongoConnector.getInstance();
+        mongoConnector.setDbName("Java2017_Test1");
         mongoConnector.getDatastore().getDB().dropDatabase();
     }
 
     @AfterClass
     public static void changeDb() {
-        MongoConnector.setDbNameForDefault();
+        mongoConnector.setDbNameForDefault();
     }
 
     @Test
@@ -202,6 +202,11 @@ public class MongoConnectorTest {
                 .extracting("name")
                 .containsSequence("Jan");
 
+        dao.delete(employee1);
+        dao.delete(employee2);
+
     }
+
+
 
 }

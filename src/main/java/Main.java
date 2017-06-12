@@ -21,7 +21,7 @@ public class Main {
     private CommandResolver commandResolver;
 
     public static void main(String[] args) {
-        MongoConnector m = new MongoConnector();
+        MongoConnector mongoConnector = MongoConnector.getInstance();
 
         Main main = new Main(new ApplicationCore(), new CommandResolver());
         main.start(args);
