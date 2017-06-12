@@ -21,12 +21,12 @@ public class DepartmentTest {
 
     @Test
     public void addTeam() {
-        // When
+        // Given
         int expectedTeamCount = 1;
         TeamType expectedTeamType = TeamType.DEV;
         Team team = new Team(expectedTeamType);
 
-        // Given
+        // When
         department.addTeam(team);
 
         // Then
@@ -71,6 +71,7 @@ public class DepartmentTest {
 
         //When
         Department d = new Department();
+
         //Then
         assertNotNull(d);
     }
@@ -82,7 +83,45 @@ public class DepartmentTest {
 
         //When
         String result = department.toString();
-        //
+
+        //Then
+        assertEquals(expectedResult,result);
+    }
+
+    @Test
+    public void testEquals(){
+        //Given
+        boolean expectedResult = true;
+
+        //When
+        boolean result = department.equals(department);
+
+        //Then
+        assertEquals(expectedResult,result);
+    }
+
+    @Test
+    public void testNonEquals(){
+        //Given
+        Department department2 = new Department();
+        boolean expectedResult = false;
+
+        //When
+        boolean result = department.equals(department2);
+
+        //Then
+        assertEquals(expectedResult,result);
+    }
+
+    @Test
+    public void testEqualsNullObject(){
+        //Given
+        boolean expectedResult = false;
+
+        //When
+        boolean result = department.equals(null);
+
+        //Then
         assertEquals(expectedResult,result);
     }
 
