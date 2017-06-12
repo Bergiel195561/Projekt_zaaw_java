@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Jaromir
  */
 
-public abstract class Employee {
+public class Employee {
     @Id
     private ObjectId id = new ObjectId();
 
@@ -25,7 +25,6 @@ public abstract class Employee {
     protected String jobPosition;
     protected float salary;
     protected Date hireDate;
-    protected int departmentId;
 
     //region Getters
 
@@ -51,10 +50,6 @@ public abstract class Employee {
 
     public Date getHireDate() {
         return hireDate;
-    }
-
-    public int getDepartmentId() {
-        return departmentId;
     }
     //endregion
 
@@ -83,10 +78,6 @@ public abstract class Employee {
     public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
-    }
     //endregion
 
     //region Constructors
@@ -110,6 +101,14 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "I am ";
+        return "Employee{" +
+                "id=" + id +
+                ", humanId='" + humanId + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", jobPosition='" + jobPosition + '\'' +
+                ", salary=" + salary +
+                ", hireDate=" + hireDate +
+                '}';
     }
 }

@@ -24,7 +24,6 @@ public class SaveToDBCommand implements Command {
     @Override
     public void doAction(String[] args) {
         for (Company company : core.getCompanies()) {
-
             mongoConnector.save(company);
         }
 

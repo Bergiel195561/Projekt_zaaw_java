@@ -2,6 +2,7 @@ package Command;
 
 import ApplicationUtilitis.ApplicationCore;
 import Model.Company;
+import Model.Employee;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
@@ -23,6 +24,12 @@ public class PrintCommand implements Command {
     public void doAction(String[] args) {
         for (Company company : core.getCompanies()) {
             System.out.println(company.toString());
+        }
+
+        System.out.println();
+
+        for (Employee employee : core.getEmployees()) {
+            System.out.println(employee.toString());
         }
     }
 

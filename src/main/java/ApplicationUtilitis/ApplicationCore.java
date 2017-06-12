@@ -46,34 +46,43 @@ public class ApplicationCore {
     //endregion
 
 
-
     public void addCompany(Company company) {
         companies.add(company);
+    }
+
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
     }
 
 
     //region Add all
     public void addAllCompanies(List<Company> companies) {
+        this.companies.clear();
         this.companies.addAll(companies);
     }
 
     public void addAllDepartments(List<Department> departments) {
+        this.departments.clear();
         this.departments.addAll(departments);
     }
 
     public void addAllEmployees(List<Employee> employees) {
+        this.employees.clear();
         this.employees.addAll(employees);
     }
 
     public void addAllManagers(List<Manager> managers) {
+        this.managers.clear();
         this.managers.addAll(managers);
     }
 
     public void addAllOrdinaryEmployees(List<OrdinaryEmployee> ordinaryEmployees) {
+        this.ordinaryEmployees.clear();
         this.ordinaryEmployees.addAll(ordinaryEmployees);
     }
 
     public void addAllTeams(List<Team> teams) {
+        this.teams.clear();
         this.teams.addAll(teams);
     }
     //endregion
