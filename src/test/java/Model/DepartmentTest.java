@@ -30,8 +30,8 @@ public class DepartmentTest {
         department.addTeam(team);
 
         // Then
-        assertEquals(department.getTeams().size(), expectedTeamCount);
-        assertEquals(department.getTeams().get(0).getType(), expectedTeamType);
+        assertEquals(expectedTeamCount,department.getTeams().size());
+        assertEquals(expectedTeamType,department.getTeams().get(0).getType());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class DepartmentTest {
         department.setName(name);
 
         // Then
-        assertEquals(department.getName(), name);
+        assertEquals(name,department.getName());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class DepartmentTest {
 
         // Then
         assertNotNull(department.getDepartmentLeader());
-        assertEquals(department.getDepartmentLeader(), departmentLeader);
+        assertEquals(departmentLeader,department.getDepartmentLeader());
 
     }
 
@@ -73,7 +73,7 @@ public class DepartmentTest {
         department.setTeams(teams);
 
         //Then
-        assertEquals(department.getTeams().size(), expectedSize);
+        assertEquals(expectedSize,department.getTeams().size());
         assertNotNull(department.getTeams());
 
     }

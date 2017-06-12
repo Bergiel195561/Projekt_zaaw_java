@@ -55,7 +55,7 @@ public class CompanyTest {
         company.setName(name);
 
         // Then
-        assertEquals(company.getName(),name);
+        assertEquals(name,company.getName());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class CompanyTest {
         company.setStreet(street);
 
         // Then
-        assertEquals(company.getStreet(),street);
+        assertEquals(street,company.getStreet());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class CompanyTest {
         company.setPhone(phone);
 
         // Then
-        assertEquals(company.getPhone(),phone);
+        assertEquals(phone,company.getPhone());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class CompanyTest {
         company.setDepartments(departments);
 
         // Then
-        assertEquals(company.getDepartments().size(),expectedSize);
+        assertEquals(expectedSize,company.getDepartments().size());
         assertTrue(company.getDepartments().equals(departments));
     }
 
@@ -146,7 +146,7 @@ public class CompanyTest {
         String result = company.toString();
 
         //Then
-        assertEquals(result,expectedResult);
+        assertEquals(expectedResult,result);
 
 
     }
