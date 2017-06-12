@@ -1,6 +1,7 @@
 package Command;
 
 import ApplicationUtilitis.ApplicationCore;
+import DB.CascadeSave;
 import DB.MongoConnector;
 import Model.*;
 
@@ -9,11 +10,11 @@ import Model.*;
  */
 public class SaveToDBCommand implements Command {
     private ApplicationCore core;
-    private MongoConnector mongoConnector;
+    private CascadeSave cascadeSave;
 
-    public SaveToDBCommand(ApplicationCore core, MongoConnector mongoConnector) {
+    public SaveToDBCommand(ApplicationCore core, CascadeSave cascadeSave) {
         this.core = core;
-        this.mongoConnector = mongoConnector;
+        this.cascadeSave = cascadeSave;
     }
 
     @Override
@@ -24,28 +25,28 @@ public class SaveToDBCommand implements Command {
     @Override
     public void doAction(String[] args) {
         for (Company company : core.getCompanies()) {
-            mongoConnector.save(company);
+            cascadeSave.saveCasdace(company);
         }
-
-        for (Department department : core.getDepartments()) {
-            mongoConnector.save(department);
-        }
-
-        for (Employee employee : core.getEmployees()) {
-            mongoConnector.save(employee);
-        }
-
-        for (Manager manager : core.getManagers()) {
-            mongoConnector.save(manager);
-        }
-
-        for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
-            mongoConnector.save(ordinaryEmployee);
-        }
-
-        for (Team team : core.getTeams()) {
-            mongoConnector.save(team);
-        }
+//
+//        for (Department department : core.getDepartments()) {
+//            cascadeSave.save(department);
+//        }
+//
+//        for (Employee employee : core.getEmployees()) {
+//            mongoConnector.save(employee);
+//        }
+//
+//        for (Manager manager : core.getManagers()) {
+//            mongoConnector.save(manager);
+//        }
+//
+//        for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
+//            mongoConnector.save(ordinaryEmployee);
+//        }
+//
+//        for (Team team : core.getTeams()) {
+//            mongoConnector.save(team);
+//        }
 
     }
 
