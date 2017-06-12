@@ -16,8 +16,9 @@ apply plugin: 'java'
 apply plugin: "info.solidsoft.pitest"
 
 pitest {
-    targetClasses = ['Model*']  //by default "${project.group}.*"
-    targetTests = ['Model*']
+
+    targetClasses = ['Utils*']
+    targetTests = ['Utils*']
     threads = 4
     outputFormats = ['XML', 'HTML']
 }
