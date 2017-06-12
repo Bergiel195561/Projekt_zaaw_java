@@ -28,7 +28,7 @@ public class SetEmployeeCommand implements Command {
             System.out.println(team.toString());
         }
 
-        System.out.println("Team id: ");
+        System.out.println("Team uniq number: ");
         String teamId = scanner.nextLine();
 
 
@@ -36,15 +36,15 @@ public class SetEmployeeCommand implements Command {
             System.out.println(ordinaryEmployee.toString());
         }
 
-        System.out.println("Employee human id: ");
+        System.out.println("Employee pesel: ");
         String employeeHumanId = scanner.nextLine();
 
 
         boolean set = false;
         for (Team team : core.getTeams()) {
-            if (team.getTeamId().equals(teamId)) {
+            if (team.getTeamUniqNumber().equals(teamId)) {
                 for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
-                    if (ordinaryEmployee.getHumanId().equals(employeeHumanId)) {
+                    if (ordinaryEmployee.getPesel().equals(employeeHumanId)) {
                         if (!team.getTeamMembers().contains(ordinaryEmployee)){
                             team.getTeamMembers().add(ordinaryEmployee);
                             set = true;

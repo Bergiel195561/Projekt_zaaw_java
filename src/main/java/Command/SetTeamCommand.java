@@ -35,7 +35,7 @@ public class SetTeamCommand implements Command {
             System.out.println(team.toString());
         }
 
-        System.out.println("Team id: ");
+        System.out.println("Team uniq number: ");
         String teamId = scanner.nextLine();
 
 
@@ -43,7 +43,7 @@ public class SetTeamCommand implements Command {
         for (Department department : core.getDepartments()) {
             if (department.getName().equals(departmentName)) {
                 for (Team team : core.getTeams()) {
-                    if (team.getTeamId().equals(teamId)) {
+                    if (team.getTeamUniqNumber().equals(teamId)) {
                         if (!department.getTeams().contains(team)) {
                             department.getTeams().add(team);
                             set = true;

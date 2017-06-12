@@ -28,7 +28,7 @@ public class AddManagerCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         ManagerBuilder builder = new ManagerBuilder();
-        System.out.println("Human id: ");
+        System.out.println("Human pesel: ");
         String managerId = scanner.nextLine();
         System.out.println("Name: ");
         String managerName = scanner.nextLine();

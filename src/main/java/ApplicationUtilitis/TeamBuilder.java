@@ -16,7 +16,7 @@ public class TeamBuilder {
     }
 
     public void setTeamId(String teamId) {
-        this.team.setTeamId(teamId);
+        this.team.setTeamUniqNumber(teamId);
     }
 
     public Team getTeam() {

@@ -33,6 +33,19 @@ public class OrdinaryEmployeeDao extends BasicDAO<OrdinaryEmployee, String> {
     }
 
     /**
+     * Pobieranie pracownika po nr PESEL
+     * @param pesel
+     * @return OrdinaryEmployee
+     */
+    public OrdinaryEmployee getEmployeeByPesel(String pesel){
+        Query<OrdinaryEmployee> query = createQuery().
+                field("pesel").
+                equal(pesel);
+
+        return query.get();
+    }
+
+    /**
      * Pobieranie pracowników z pensją większą od danej
      * @param salary Nazwa szukanej firmy
      * @return Lista OrdinaryEmployee

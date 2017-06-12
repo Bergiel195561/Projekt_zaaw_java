@@ -32,7 +32,7 @@ public class AddTeamCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         TeamBuilder builder = new TeamBuilder();
-        System.out.println("Team id: ");
+        System.out.println("Team uniq number: ");
         String teamId = scanner.nextLine();
 
         System.out.println("Team type: ");

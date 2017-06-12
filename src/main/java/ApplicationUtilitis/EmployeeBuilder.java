@@ -12,7 +12,7 @@ public class EmployeeBuilder {
 
     public void createEmployee(String id) {
         this.employee = new OrdinaryEmployee();
-        this.employee.setHumanId(id);
+        this.employee.setPesel(id);
     }
 
     public void setEmployeeName(String name) {

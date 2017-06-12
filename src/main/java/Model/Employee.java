@@ -19,7 +19,7 @@ public class Employee {
 
 
     @Indexed(options = @IndexOptions(unique = true))
-    protected String humanId;
+    protected String pesel;
     protected String name;
     protected String surname;
     protected String jobPosition;
@@ -28,8 +28,8 @@ public class Employee {
 
     //region Getters
 
-    public String getHumanId() {
-        return humanId;
+    public String getPesel() {
+        return pesel;
     }
 
     public String getName() {
@@ -55,8 +55,8 @@ public class Employee {
 
     //region Setters
 
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
     public void setName(String name) {
@@ -85,13 +85,13 @@ public class Employee {
     }
 
     public Employee(String name, String surname, String humanId) {
-        this.humanId = humanId;
+        this.pesel = humanId;
         this.name = name;
         this.surname = surname;
     }
 
     public Employee(String name, String surname, String jobPosition, String humanId) {
-        this.humanId = humanId;
+        this.pesel = humanId;
         this.name = name;
         this.surname = surname;
         this.jobPosition = jobPosition;
@@ -102,7 +102,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "humanId='" + humanId + '\'' +
+                "pesel='" + pesel + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", jobPosition='" + jobPosition + '\'' +
@@ -120,7 +120,7 @@ public class Employee {
 
         if (Float.compare(employee.salary, salary) != 0) return false;
         if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
-        if (humanId != null ? !humanId.equals(employee.humanId) : employee.humanId != null) return false;
+        if (pesel != null ? !pesel.equals(employee.pesel) : employee.pesel != null) return false;
         if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
         if (surname != null ? !surname.equals(employee.surname) : employee.surname != null) return false;
         if (jobPosition != null ? !jobPosition.equals(employee.jobPosition) : employee.jobPosition != null)
@@ -131,7 +131,7 @@ public class Employee {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (humanId != null ? humanId.hashCode() : 0);
+        result = 31 * result + (pesel != null ? pesel.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);

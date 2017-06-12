@@ -28,7 +28,7 @@ public class SetTeamManagerCommand implements Command {
             System.out.println(team.toString());
         }
 
-        System.out.println("Team id: ");
+        System.out.println("Team uniq numer: ");
         String teamId = scanner.nextLine();
 
 
@@ -36,15 +36,15 @@ public class SetTeamManagerCommand implements Command {
             System.out.println(manager.toString());
         }
 
-        System.out.println("Manager human id: ");
+        System.out.println("Manager pesel: ");
         String managerHumanId = scanner.nextLine();
 
         boolean set = false;
 
         for (Team team : core.getTeams()) {
-            if (team.getTeamId().equals(teamId)) {
+            if (team.getTeamUniqNumber().equals(teamId)) {
                 for (Manager manager : core.getManagers()) {
-                    if (manager.getHumanId().equals(managerHumanId)) {
+                    if (manager.getPesel().equals(managerHumanId)) {
                         team.setTeamLeader(manager);
                         set = true;
                         break;

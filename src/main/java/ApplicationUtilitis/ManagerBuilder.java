@@ -12,7 +12,7 @@ public class ManagerBuilder {
 
     public void createManager(String id) {
         this.manager = new Manager();
-        this.manager.setHumanId(id);
+        this.manager.setPesel(id);
     }
 
     public void setManagerName(String name) {

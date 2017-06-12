@@ -36,7 +36,7 @@ public class SetCompanyManagerCommand implements Command {
             System.out.println(manager.toString());
         }
 
-        System.out.println("Manager human id: ");
+        System.out.println("Manager pesel: ");
         String managerHumanId = scanner.nextLine();
 
         boolean set = false;
@@ -44,7 +44,7 @@ public class SetCompanyManagerCommand implements Command {
         for (Company company : core.getCompanies()) {
             if (company.getName().equals(companyName)) {
                 for (Manager manager : core.getManagers()) {
-                    if (manager.getHumanId().equals(managerHumanId)) {
+                    if (manager.getPesel().equals(managerHumanId)) {
                         company.setCeo(manager);
                         set = true;
                         break;

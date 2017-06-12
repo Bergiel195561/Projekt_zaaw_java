@@ -30,7 +30,7 @@ public class AddEmployeeCommand implements Command {
         Scanner scanner = new Scanner(System.in);
 
         EmployeeBuilder builder = new EmployeeBuilder();
-        System.out.println("Human id: ");
+        System.out.println("Human pesel: ");
         String employeeId = scanner.nextLine();
         System.out.println("Name: ");
         String employeeName = scanner.nextLine();
