@@ -1,13 +1,6 @@
 import ApplicationUtilitis.ApplicationCore;
-import Command.Command;
-import Command.CommandResolver;
-import Command.HelpCommand;
-import Command.PrintCommand;
-import Command.AddCompanyCommand;
-import Command.InfoCommand;
-import DB.CompanyDao;
+import Command.*;
 import DB.MongoConnector;
-import Model.Company;
 
 import java.util.Scanner;
 
@@ -19,21 +12,32 @@ public class Main {
 
     private ApplicationCore core;
     private CommandResolver commandResolver;
+    private MongoConnector mongoConnector;
 
     public static void main(String[] args) {
-        MongoConnector mongoConnector = MongoConnector.getInstance();
-
-        Main main = new Main(new ApplicationCore(), new CommandResolver());
+        Main main = new Main(new ApplicationCore(), new CommandResolver(), MongoConnector.getInstance());
         main.start(args);
     }
 
-    public Main(ApplicationCore core, CommandResolver commandResolver) {
+    public Main(ApplicationCore core, CommandResolver commandResolver, MongoConnector mongoConnector) {
         this.core = core;
         this.commandResolver = commandResolver;
+        this.mongoConnector = mongoConnector;
+        this.mongoConnector.setDbNameForDefault();
     }
 
     private void init() {
+        commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
+        commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
+        commandResolver.registerCommand(new AddDepartmentCommand(core));
+        commandResolver.registerCommand(new AddManagerCommand(core));
+        commandResolver.registerCommand(new SetCompanyManagerCommand(core));
+        commandResolver.registerCommand(new AddEmployeeCommand(core));
+        commandResolver.registerCommand(new SetEmployeeCommand(core));
+        commandResolver.registerCommand(new SetTeamCommand(core));
+        commandResolver.registerCommand(new SetTeamManagerCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
+        commandResolver.registerCommand(new AddTeamCommand(core));
         commandResolver.registerCommand(new InfoCommand());
         commandResolver.registerCommand(new PrintCommand(core));
         commandResolver.registerCommand(new HelpCommand());

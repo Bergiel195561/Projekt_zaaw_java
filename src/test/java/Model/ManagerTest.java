@@ -39,17 +39,19 @@ public class ManagerTest {
     }
 
 
-    /*@Test
+    @Test
     public void testToString() {
         //Given
         Manager man = new Manager(name, surname, humanId);
-        String expectedResult = "";
+        String expectedResult = "Manager{pesel='ManagerId', name='Manager', surname='Manager', jobPosition='null', salary=0.0, hireDate=null}";
 
         //When
         String result = man.toString();
 
         //Then
         assertEquals(expectedResult,result);
-    }*/
+    }
+
+
 
 }

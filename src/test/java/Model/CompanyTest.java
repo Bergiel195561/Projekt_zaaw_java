@@ -130,6 +130,8 @@ public class CompanyTest {
         assertNotNull(c);
     }
 
+
+
     @Test
     public void testToString(){
         //Given

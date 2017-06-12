@@ -46,19 +46,7 @@ public class DepartmentTest {
         assertEquals(name,department.getName());
     }
 
-    @Test
-    public void setDepartmentLeader() {
-        // Given
-        Manager departmentLeader = new Manager();
 
-        // When
-        department.setDepartmentLeader(departmentLeader);
-
-        // Then
-        assertNotNull(department.getDepartmentLeader());
-        assertEquals(departmentLeader,department.getDepartmentLeader());
-
-    }
 
     @Test
     public void setTeams() {
@@ -90,7 +78,7 @@ public class DepartmentTest {
     @Test
     public void testToString(){
         //Given
-        String expectedResult = "Department{name='" + "Department" + "'}";
+        String expectedResult = "Department{name='" + "Department" + "', teams=[]}";
 
         //When
         String result = department.toString();
