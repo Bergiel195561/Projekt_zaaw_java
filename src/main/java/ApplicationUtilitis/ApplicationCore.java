@@ -54,6 +54,10 @@ public class ApplicationCore {
         employees.add(employee);
     }
 
+    public void addManager(Manager manager) {
+        managers.add(manager);
+    }
+
 
     //region Add all
     public void addAllCompanies(List<Company> companies) {

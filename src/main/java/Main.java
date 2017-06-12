@@ -8,6 +8,9 @@ import Command.InfoCommand;
 import Command.GetFromDBCommand;
 import Command.SaveToDBCommand;
 import Command.AddEmployeeCommand;
+import Command.AddManagerCommand;
+import Command.SetManagerCommand;
+
 
 import DB.MongoConnector;
 
@@ -38,6 +41,8 @@ public class Main {
     private void init() {
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
+        commandResolver.registerCommand(new AddManagerCommand(core));
+        commandResolver.registerCommand(new SetManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
         commandResolver.registerCommand(new InfoCommand());
