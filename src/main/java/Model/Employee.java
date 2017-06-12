@@ -29,9 +29,7 @@ public abstract class Employee {
 
     //region Getters
 
-    public String getHumanId() {
-        return pesel;
-    }
+    public String getPesel() {return pesel;}
 
     public String getName() {
         return name;
@@ -60,8 +58,8 @@ public abstract class Employee {
 
     //region Setters
 
-    public void setHumanId(String humanId) {
-        this.pesel = humanId;
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
     public void setName(String name) {
