@@ -182,4 +182,26 @@ public class MongoConnectorTest {
 
     }
 
+    @Test
+    public void getEmployeeByPesel(){
+        //given
+        String basePesel = "90097823456";
+        OrdinaryEmployee employee1 = new OrdinaryEmployee("Jan", "Kowalski", basePesel);
+        OrdinaryEmployee employee2 = new OrdinaryEmployee("Maciej", "Lipka", "90097823452");
+        OrdinaryEmployeeDao dao = new OrdinaryEmployeeDao(mongoConnector.getDatastore());
+        dao.save(employee1);
+        dao.save(employee2);
+
+        //when
+        OrdinaryEmployee expectedEmployee = dao.getEmployeeByPesel(basePesel);
+
+        //then
+        assertThat(expectedEmployee)
+                .isNotNull()
+                .isOfAnyClassIn(OrdinaryEmployee.class)
+                .extracting("name")
+                .containsSequence("Jan");
+
+    }
+
 }
