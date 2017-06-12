@@ -66,6 +66,10 @@ public class ApplicationCore {
         teams.add(team);
     }
 
+    public void addDepartment(Department department) {
+        departments.add(department);
+    }
+
 
     //region Add all
     public void addAllCompanies(List<Company> companies) {

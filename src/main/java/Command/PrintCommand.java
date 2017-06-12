@@ -27,6 +27,12 @@ public class PrintCommand implements Command {
 
         System.out.println();
 
+        for (Department department : core.getDepartments()) {
+            System.out.println(department.toString());
+        }
+
+        System.out.println();
+
         for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
             System.out.println(ordinaryEmployee.toString());
         }
