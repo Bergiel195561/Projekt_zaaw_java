@@ -1,15 +1,13 @@
 package DB;
 
-import Model.Company;
-import Model.Employee;
-import Model.OrdinaryEmployee;
+import Helpers.TeamType;
+import Model.*;
+import PrepareCompany.CompanyCreate;
 import com.mongodb.DuplicateKeyException;
 import com.sun.org.apache.xpath.internal.operations.Or;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
+import org.mongodb.morphia.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +30,11 @@ public class MongoConnectorTest {
     public static void initDb() {
         mongoConnector = MongoConnector.getInstance();
         mongoConnector.setDbName("Java2017_Test1");
+        mongoConnector.getDatastore().getDB().dropDatabase();
+    }
+
+    @Before
+    public void clearDb() {
         mongoConnector.getDatastore().getDB().dropDatabase();
     }
 
@@ -173,17 +176,17 @@ public class MongoConnectorTest {
 
         mongoConnector.save(emp);
 
-        dao.increaseSalary(bonusSalary,employeeName);
+        dao.increaseSalary(bonusSalary, employeeName);
         OrdinaryEmployee employee = dao.getEmployeeByName(employeeName);
 
-        assertEquals(initialSalary+bonusSalary,employee.getSalary(),0.001 );
+        assertEquals(initialSalary + bonusSalary, employee.getSalary(), 0.001);
 
         mongoConnector.getDatastore().delete(emp);
 
     }
 
     @Test
-    public void getEmployeeByPesel(){
+    public void getEmployeeByPesel() {
         //given
         String basePesel = "90097823456";
         OrdinaryEmployee employee1 = new OrdinaryEmployee("Jan", "Kowalski", basePesel);
@@ -207,6 +210,131 @@ public class MongoConnectorTest {
 
     }
 
+    @Test
+    public void saveCompanyCascade() {
+        //given
+        Company company = CompanyCreate.getBigCompany();
+        String expectedCompanyName = company.getName();
+
+        //when
+        CascadeSave cascadeSave = new CascadeSave(mongoConnector);
+        cascadeSave.saveCasdace(company);
+
+        //then
+        Company companyFromDB = mongoConnector.getDatastore().find(Company.class).get();
+        assertThat(companyFromDB.getName()).isEqualTo(expectedCompanyName);
+    }
+
+    @Test
+    public void saveCompanyCascadeDepartmentContains() {
+        //given
+        Company company = CompanyCreate.getBigCompany();
+        List<Department> departmentList = company.getDepartments();
+        int expectedDepartmentsNumber = departmentList.size();
+
+        //when
+        CascadeSave cascadeSave = new CascadeSave(mongoConnector);
+        cascadeSave.saveCasdace(company);
+
+        //then
+        Company companyFromDB = mongoConnector.getDatastore().find(Company.class).get();
+        assertThat(companyFromDB.getDepartments())
+                .hasSize(expectedDepartmentsNumber);
+    }
+
+    @Test
+    public void saveCompanyCascadeDouble() {
+        //given
+        Company company = CompanyCreate.getBigCompany();
+        List<Department> departmentList = company.getDepartments();
+        int expectedCompanyNumber = 1;
+
+        //when
+        CascadeSave cascadeSave = new CascadeSave(mongoConnector);
+        cascadeSave.saveCasdace(company);
+        cascadeSave.saveCasdace(company);
+
+        //then
+        Query<Company> query = mongoConnector.getDatastore().createQuery(Company.class);
+        List<Company> companies = query.asList();
+        assertThat(companies)
+                .hasSize(expectedCompanyNumber);
+    }
+
+    @Test
+    public void addUniqueEmployeeToDB() {
+        //given
+        OrdinaryEmployee employee = new OrdinaryEmployee("Andrzej", "Nowak", "11122233322");
+
+        //when
+        mongoConnector.save(employee);
+
+        //then
+        OrdinaryEmployee ordinaryEmployee = mongoConnector.getDatastore().find(OrdinaryEmployee.class).get();
+        assertThat(ordinaryEmployee)
+                .isNotNull()
+                .isOfAnyClassIn(OrdinaryEmployee.class)
+                .extracting("name")
+                .containsSequence(employee.getName());
+    }
+
+    @Test
+    public void addDuplicateEmployeeToDB() {
+        //given
+        OrdinaryEmployee employee = new OrdinaryEmployee("Andrzej", "Nowak", "11122233322");
+        int expectedEmployeesNumber = 1;
+
+        //when
+        mongoConnector.save(employee);
+        mongoConnector.save(employee);
+
+        //then
+        Query<OrdinaryEmployee> query = mongoConnector.getDatastore().createQuery(OrdinaryEmployee.class);
+        List<OrdinaryEmployee> employees = query.asList();
+
+        assertThat(employees)
+                .hasSize(expectedEmployeesNumber);
+    }
+
+    @Test
+    public void addUniqueTeamToDB() {
+        //given
+        String teamUniq = "DevOps01";
+        String key = "teamUniqNumber";
+        Team team = new Team(TeamType.DEV);
+        team.setTeamUniqNumber(teamUniq);
+
+        //when
+        mongoConnector.save(team);
+
+        //then
+        Team teamDb = mongoConnector.getDatastore().find(Team.class).get();
+        assertThat(teamDb)
+                .isNotNull()
+                .isOfAnyClassIn(Team.class)
+                .extracting(key)
+                .containsSequence(teamUniq);
+    }
+
+    @Test
+    public void addDuplicateTeamToDB() {
+        //given
+        String teamUniq = "DevOps01";
+        int expectedTeamsNumber = 1;
+        Team team = new Team(TeamType.DEV);
+        team.setTeamUniqNumber(teamUniq);
+
+        //when
+        mongoConnector.save(team);
+        mongoConnector.save(team);
+
+        //then
+        Query<Team> query = mongoConnector.getDatastore().createQuery(Team.class);
+        List<Team> teams = query.asList();
+
+        assertThat(teams)
+                .hasSize(expectedTeamsNumber);
+    }
 
 
 }

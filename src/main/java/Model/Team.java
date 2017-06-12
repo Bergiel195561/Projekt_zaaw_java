@@ -3,9 +3,7 @@ package Model;
 import Helpers.TeamType;
 import Utils.CustomHashSet;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.*;
 
 /**
  * Klasa odpowiedzialna za zespół pracowników w danym dziale
@@ -16,6 +14,8 @@ public class Team {
     @Id
     private ObjectId id;
 
+    @Indexed(options = @IndexOptions(unique = true))
+    private String teamUniqNumber;
     private TeamType type;
 
     @Reference
@@ -49,6 +49,11 @@ public class Team {
     public void setTeamMembers(CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.teamMembers = teamMembers;
     }
+
+    public void setTeamUniqNumber(String teamUniqNumber) {
+        this.teamUniqNumber = teamUniqNumber;
+    }
+
     //endregion
 
     //region Getters
@@ -63,5 +68,10 @@ public class Team {
     public CustomHashSet<OrdinaryEmployee> getTeamMembers() {
         return teamMembers;
     }
+
+    public String getTeamUniqNumber() {
+        return teamUniqNumber;
+    }
+
     //endregion
 }
