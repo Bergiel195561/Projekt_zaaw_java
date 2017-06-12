@@ -1,6 +1,5 @@
 package ApplicationUtilitis;
 
-import Model.Employee;
 import Model.Manager;
 
 import java.util.Date;

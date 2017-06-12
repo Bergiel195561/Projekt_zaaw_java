@@ -10,6 +10,7 @@ import Command.SaveToDBCommand;
 import Command.AddEmployeeCommand;
 import Command.AddManagerCommand;
 import Command.SetManagerCommand;
+import Command.AddTeamCommand;
 
 
 import DB.MongoConnector;
@@ -45,6 +46,7 @@ public class Main {
         commandResolver.registerCommand(new SetManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
+        commandResolver.registerCommand(new AddTeamCommand(core));
         commandResolver.registerCommand(new InfoCommand());
         commandResolver.registerCommand(new PrintCommand(core));
         commandResolver.registerCommand(new HelpCommand());

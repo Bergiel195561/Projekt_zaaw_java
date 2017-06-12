@@ -58,6 +58,10 @@ public class ApplicationCore {
         managers.add(manager);
     }
 
+    public void addTeam(Team team) {
+        teams.add(team);
+    }
+
 
     //region Add all
     public void addAllCompanies(List<Company> companies) {

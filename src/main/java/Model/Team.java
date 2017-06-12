@@ -64,4 +64,15 @@ public class Team {
         return teamMembers;
     }
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", type=" + type +
+                ", departmentLeader=" + departmentLeader +
+                ", teamMembers=" + teamMembers +
+                '}';
+    }
 }

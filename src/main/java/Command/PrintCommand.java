@@ -4,6 +4,7 @@ import ApplicationUtilitis.ApplicationCore;
 import Model.Company;
 import Model.Employee;
 import Model.Manager;
+import Model.Team;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
@@ -37,6 +38,12 @@ public class PrintCommand implements Command {
 
         for (Manager manager : core.getManagers()) {
             System.out.println(manager.toString());
+        }
+
+        System.out.println();
+
+        for (Team team: core.getTeams()) {
+            System.out.println(team.toString());
         }
     }
 

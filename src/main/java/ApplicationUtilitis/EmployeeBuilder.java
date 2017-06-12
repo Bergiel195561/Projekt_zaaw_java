@@ -1,6 +1,6 @@
 package ApplicationUtilitis;
 
-import Model.Employee;
+import Model.OrdinaryEmployee;
 
 import java.util.Date;
 
@@ -8,10 +8,10 @@ import java.util.Date;
  * Created by Bartek on 11.06.2017.
  */
 public class EmployeeBuilder {
-    private Employee employee;
+    private OrdinaryEmployee employee;
 
     public void createEmployee(String id) {
-        this.employee = new Employee();
+        this.employee = new OrdinaryEmployee();
         this.employee.setHumanId(id);
     }
 
@@ -35,7 +35,7 @@ public class EmployeeBuilder {
         this.employee.setHireDate(hireDate);
     }
 
-    public Employee getEmployee() {
+    public OrdinaryEmployee getEmployee() {
         return employee;
     }
 }

@@ -3,6 +3,7 @@ package Command;
 import ApplicationUtilitis.ApplicationCore;
 import ApplicationUtilitis.EmployeeBuilder;
 import Model.Employee;
+import Model.OrdinaryEmployee;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -47,7 +48,7 @@ public class AddEmployeeCommand implements Command {
         builder.setEmployeeSalary(Float.valueOf(employeeSalary));
         builder.setEmployeeHireDate(new Date());
 
-        Employee employee = builder.getEmployee();
+        OrdinaryEmployee employee = builder.getEmployee();
         core.addEmployee(employee);
     }
 
