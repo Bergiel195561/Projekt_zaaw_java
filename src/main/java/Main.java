@@ -1,5 +1,6 @@
 import ApplicationUtilitis.ApplicationCore;
 import Command.*;
+import DB.CascadeSave;
 import DB.MongoConnector;
 
 import java.util.Scanner;
@@ -28,12 +29,13 @@ public class Main {
 
     private void init() {
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
-        commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
+        commandResolver.registerCommand(new SaveToDBCommand(core, new CascadeSave(mongoConnector)));
         commandResolver.registerCommand(new AddDepartmentCommand(core));
         commandResolver.registerCommand(new AddManagerCommand(core));
         commandResolver.registerCommand(new SetCompanyManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));
         commandResolver.registerCommand(new SetEmployeeCommand(core));
+        commandResolver.registerCommand(new SetDepartmentCommand(core));
         commandResolver.registerCommand(new SetTeamCommand(core));
         commandResolver.registerCommand(new SetTeamManagerCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
