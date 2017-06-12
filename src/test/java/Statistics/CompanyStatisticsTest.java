@@ -123,8 +123,6 @@ public class CompanyStatisticsTest {
 //                .filter(d -> d.getName()).equals("IT");
         //when
         CompanyStatistics.getDepartmentDescription(company.getDepartments().get(0));
-        //then
-        //assertThat(description).containsSequence(expectedDepartmentName, expectedTeamName, expectedTeamName1);
 
     }
 

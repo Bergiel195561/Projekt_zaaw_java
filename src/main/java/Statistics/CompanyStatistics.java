@@ -37,14 +37,13 @@ public class CompanyStatistics {
         return builder.toString();
     }
 
-    public static String getDepartmentDescription(Department department){
+    public static void getDepartmentDescription(Department department){
         HashSet<OrdinaryEmployee> set = new HashSet<>();
         for (Team team: department.getTeams()) {
             for(OrdinaryEmployee emp: team.getTeamMembers()){
                 set.add(emp);
             }
         }
-
         String leftAlignFormat = "| %-15s | %-15d | %-18d |%n";
         System.out.format("+-----------------+-----------------+--------------------+%n");
         System.out.format("| Department name | Number of teams | Number of employees|%n");
@@ -52,7 +51,6 @@ public class CompanyStatistics {
         System.out.format(leftAlignFormat, department.getName(), department.getTeams().size(), set.size());
         System.out.format("+-----------------+-----------------+--------------------+%n");
 
-        return null;
     }
 
 
