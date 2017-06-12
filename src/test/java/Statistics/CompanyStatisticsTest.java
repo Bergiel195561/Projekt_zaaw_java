@@ -13,6 +13,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.sun.tools.doclets.formats.html.markup.HtmlStyle.description;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
@@ -100,7 +101,7 @@ public class CompanyStatisticsTest {
         //then
         assertThat(description).containsSequence(expectedDepartmentName, expectedTeamName, expectedTeamName1);
     }
-    
+
     @Test(expected = AssertionError.class)
     public void getWholeCompanyDescriptionShouldFail(){
         //given
@@ -115,6 +116,17 @@ public class CompanyStatisticsTest {
 
     }
 
+    @Test
+    public void getDepartmentDescriptionShould(){
+        //given
+//        Department dep = company.getDepartments().stream()
+//                .filter(d -> d.getName()).equals("IT");
+        //when
+        CompanyStatistics.getDepartmentDescription(company.getDepartments().get(0));
+        //then
+        //assertThat(description).containsSequence(expectedDepartmentName, expectedTeamName, expectedTeamName1);
+
+    }
 
 
 }
