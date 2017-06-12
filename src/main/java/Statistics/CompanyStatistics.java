@@ -55,12 +55,13 @@ public class CompanyStatistics {
 
     public static String listAllEmployeesFromTeam(Team team){
         StringBuilder builder = new StringBuilder();
-        builder.append("Employees of " + team.getTypeDescription() + " department");
+        builder.append("Employees of " + team.getTypeDescription() + " department \n");
+        builder.append("---------------------------------------------- \n");
         for (OrdinaryEmployee emp: team.getTeamMembers()) {
             builder.append("Name: " + emp.getName() + "\n");
             builder.append("Surname: " + emp.getSurname() + "\n");
             builder.append("Pesel: " + emp.getPesel() + "\n");
-            builder.append("----------------------------------------------");
+            builder.append("---------------------------------------------- \n");
         }
 
         return builder.toString();

@@ -6,6 +6,7 @@ import Model.Department;
 import Model.OrdinaryEmployee;
 import Model.Team;
 import org.assertj.core.api.Fail;
+import org.assertj.core.api.StringAssert;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.junit.runners.Parameterized;
@@ -143,6 +144,7 @@ public class CompanyStatisticsTest {
                 .filter(t -> t.getType().equals(TeamType.DEV)).findFirst().get();
         //when
         description = CompanyStatistics.listAllEmployeesFromTeam(team);
+        System.out.println(description);
         //then
         assertThat(description).containsSequence(expectedEmployeeName,expectedEmployeeSurname, expectedEmployeePesel);
     }
@@ -164,5 +166,20 @@ public class CompanyStatisticsTest {
         assertThat(description).containsSequence(expectedEmployeeName,expectedEmployeeSurname, expectedEmployeePesel);
     }
 
-    
+    @Test
+    public void listAllEmployeesFromTeamShouldNotBeNull(){
+        //given
+        String description;
+        Team team = company.getDepartments().stream()
+                .filter(d -> d.getName().equalsIgnoreCase("IT"))
+                .findFirst().get().getTeams().stream()
+                .filter(t -> t.getType().equals(TeamType.TESTERS)).findFirst().get();
+        //when
+        description = CompanyStatistics.listAllEmployeesFromTeam(team);
+        //then
+        assertThat(description).isNotNull()
+                .isOfAnyClassIn(String.class);
+    }
+
+
 }
