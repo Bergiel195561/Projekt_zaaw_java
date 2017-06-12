@@ -1,3 +1,17 @@
+package PrepareCompany;
+
+import Helpers.TeamType;
+import Model.*;
+import Utils.CustomHashSet;
+
+import java.util.ArrayList;
+
+/**
+ * Created by krystian on 12.06.17.
+ */
+public class CompanyCreate {
+
+    public static Company getBigCompany(){
 
         Company c = new Company("Nazwa", "Ulica", "Miasto", "111222333", new ArrayList<>());
         Department d = new Department("Kozaki");
@@ -32,5 +46,7 @@
         c.addDepartment(d);
         c.addDepartment(d2);
 
-        CascadeSave cascadeSave = new CascadeSave(m);
-        cascadeSave.saveCasdace(c);
+        return c;
+    }
+
+}
