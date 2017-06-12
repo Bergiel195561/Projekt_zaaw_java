@@ -1,13 +1,32 @@
 group 'org.zaaw_java.staffmanagement'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.11'
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: "info.solidsoft.pitest"
+
+pitest {
+    targetClasses = ['Model*']  //by default "${project.group}.*"
+    targetTests = ['Model*']
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+}
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     compileOnly "org.projectlombok:lombok:1.16.16"
