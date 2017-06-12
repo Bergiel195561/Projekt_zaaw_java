@@ -1,23 +1,33 @@
 package Utils;
 
+import DB.MongoConnector;
 import DB.OrdinaryEmployeeDao;
+import Model.Employee;
 import Model.OrdinaryEmployee;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by apple on 12/06/17.
  */
 public class EntitiesManager {
 
-    private static OrdinaryEmployeeDao employeeDAO;
-    static {
-//        employeeDAO = new OrdinaryEmployeeDao();
-    }
-    public static OrdinaryEmployee getEmployeesByPesel(String pesel){
+    private static MongoConnector mongoConnector;
 
-//        List<OrdinaryEmployee> employees = OrdinaryEmployeeDao;
-    return null;
+    static{
+        mongoConnector = MongoConnector.getInstance();
+    }
+
+    public static Optional<OrdinaryEmployee> getEmployeesByPesel(String pesel){
+
+        List<OrdinaryEmployee> employees = mongoConnector.getDatastore().find(OrdinaryEmployee.class).asList();
+        Optional<OrdinaryEmployee> employee = employees.stream()
+                .filter(e -> e.getName().equalsIgnoreCase(pesel))
+                .findFirst();
+
+        return  employee;
     }
 
 }
