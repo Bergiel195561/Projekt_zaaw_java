@@ -14,6 +14,7 @@ import Command.SetCompanyManagerCommand;
 import Command.SetEmployeeCommand;
 import Command.SetTeamManagerCommand;
 import Command.AddDepartmentCommand;
+import Command.SetTeamCommand;
 
 
 import DB.MongoConnector;
@@ -50,6 +51,7 @@ public class Main {
         commandResolver.registerCommand(new SetCompanyManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));
         commandResolver.registerCommand(new SetEmployeeCommand(core));
+        commandResolver.registerCommand(new SetTeamCommand(core));
         commandResolver.registerCommand(new SetTeamManagerCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
         commandResolver.registerCommand(new AddTeamCommand(core));
