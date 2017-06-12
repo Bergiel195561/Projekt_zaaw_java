@@ -1,5 +1,6 @@
 package Model;
 
+import lombok.Data;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
  *
  * @author krystian
  */
+@Data
 @Entity(noClassnameStored = true)
 public class Company {
     @Id
@@ -42,34 +44,9 @@ public class Company {
     }
 
     //region Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setDepartments(List<Department> departments) {
-        this.departments = departments;
-    }
-
-    public void setCeo(Manager ceo) {
-        this.ceo = ceo;
-    }
-
     public void addDepartment(Department department) {
         this.departments.add(department);
     }
-
     //endregion
 
 

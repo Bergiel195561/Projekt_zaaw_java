@@ -19,7 +19,7 @@ public class Employee {
 
 
     @Indexed(options = @IndexOptions(unique = true))
-    protected String humanId;
+    protected String pesel;
     protected String name;
     protected String surname;
     protected String jobPosition;
@@ -28,9 +28,7 @@ public class Employee {
 
     //region Getters
 
-    public String getHumanId() {
-        return humanId;
-    }
+    public String getPesel() {return pesel;}
 
     public String getName() {
         return name;
@@ -55,8 +53,8 @@ public class Employee {
 
     //region Setters
 
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
     public void setName(String name) {
@@ -85,13 +83,13 @@ public class Employee {
     }
 
     public Employee(String name, String surname, String humanId) {
-        this.humanId = humanId;
+        this.pesel = humanId;
         this.name = name;
         this.surname = surname;
     }
 
     public Employee(String name, String surname, String jobPosition, String humanId) {
-        this.humanId = humanId;
+        this.pesel = humanId;
         this.name = name;
         this.surname = surname;
         this.jobPosition = jobPosition;

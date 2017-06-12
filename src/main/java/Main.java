@@ -17,6 +17,8 @@ import Command.AddDepartmentCommand;
 import Command.SetTeamCommand;
 
 
+
+import Command.*;
 import DB.MongoConnector;
 
 import java.util.Scanner;

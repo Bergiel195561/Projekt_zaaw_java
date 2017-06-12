@@ -16,7 +16,7 @@ public class Team {
     private ObjectId id = new ObjectId();
 
     @Indexed(options = @IndexOptions(unique = true))
-    private String teamId;
+    private String teamUniqNumber;
     private TeamType type;
 
     @Reference
@@ -45,17 +45,13 @@ public class Team {
     public void setTeamMembers(CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.teamMembers = teamMembers;
     }
-
-    public void setTeamId(String teamId) {
-        this.teamId = teamId;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
+  
     public void setTeamLeader(Manager teamLeader) {
         this.teamLeader = teamLeader;
+    }
+  
+    public void setTeamUniqNumber(String teamUniqNumber) {
+        this.teamUniqNumber = teamUniqNumber;
     }
     //endregion
 
@@ -68,12 +64,12 @@ public class Team {
         return teamMembers;
     }
 
-    public String getTeamId() {
-        return teamId;
-    }
-
     public Manager getTeamLeader() {
         return teamLeader;
+    }
+  
+    public String getTeamUniqNumber() {
+        return teamUniqNumber;
     }
     //endregion
 
@@ -81,7 +77,7 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "teamId='" + teamId + '\'' +
+                "teamUniqNumber='" + teamUniqNumber + '\'' +
                 ", type=" + type +
                 ", teamLeader=" + teamLeader +
                 ", teamMembers=" + teamMembers +
