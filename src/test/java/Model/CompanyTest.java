@@ -111,6 +111,7 @@ public class CompanyTest {
         assertTrue(company.getDepartments().equals(departments));
     }
 
+    @Test
     public void createCompany(){
         //Given
         List<Department> departments = new ArrayList<>();
@@ -130,14 +131,21 @@ public class CompanyTest {
     }
 
     @Test
-    public void testtoString(){
+    public void testToString(){
         //Given
-        String expectedResult = "";
-
-        //Then
-        String result = company.toString();
+        company.setName("Company");
+        company.setCity("CompanyCity");
+        String expectedResult = "Company{name='Company', " +
+                "street='null', " +
+                "city='CompanyCity', " +
+                "phone='null', " +
+                "ceo=null, " +
+                "departments=[]}";
 
         //When
+        String result = company.toString();
+
+        //Then
         assertEquals(result,expectedResult);
 
 

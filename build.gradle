@@ -17,8 +17,8 @@ apply plugin: "info.solidsoft.pitest"
 
 pitest {
 
-    targetClasses = ['Utils*']
-    targetTests = ['Utils*']
+    targetClasses = ['Model*']
+    targetTests = ['Model*']
     threads = 4
     outputFormats = ['XML', 'HTML']
 }
