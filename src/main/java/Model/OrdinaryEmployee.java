@@ -24,13 +24,14 @@ public class OrdinaryEmployee extends Employee {
     }
     //endregion
 
-    //region Methods
 
     @Override
-    public String toString() {
-        return super.toString() + this.jobPosition + " [" + this.getName() + " " + this.getSurname() + "]";
+    public boolean equals(Object o) {
+        return super.equals(o);
     }
 
-    //endregion
-
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

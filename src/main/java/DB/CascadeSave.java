@@ -31,7 +31,7 @@ public class CascadeSave {
             CustomHashSet<Team> teams = departmentList.get(i).getTeams();
             for (int j = 0; j < teams.size(); j++) {
                 CustomHashSet<OrdinaryEmployee> teamMembers = teams.get(j).getTeamMembers();
-                Manager departmentLeader = teams.get(j).getDepartmentLeader();
+                Manager departmentLeader = teams.get(j).getTeamLeader();
                 saveManager(departmentLeader);
                 saveEmployees(teamMembers);
             }

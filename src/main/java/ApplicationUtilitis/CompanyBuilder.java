@@ -28,18 +28,6 @@ public class CompanyBuilder {
         this.company.setPhone(phone);
     }
 
-    public void addDepartment(String departmentName) {
-        this.company.addDepartment(new Department(departmentName));
-    }
-
-    public void setCompanyCeo(String ceoName, String ceoSurname) {
-        this.company.setCeo(new Manager(ceoName, ceoSurname, "CEO")); //TODO enum
-    }
-
-    public void setDepartmentManager(Integer departmentId, String managerName, String managerSurname, String managerJobPosition) {
-        this.company.getDepartments().get(departmentId).setDepartmentLeader(new Manager(managerName, managerSurname, managerJobPosition));
-    }
-
     public Company getCompany() {
         return company;
     }
