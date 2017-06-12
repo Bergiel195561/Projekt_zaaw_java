@@ -13,21 +13,33 @@ import java.util.logging.Logger;
  */
 public class MongoConnector {
 
+    //Singleton methods
+    private static MongoConnector instance = null;
+    private static Object mutex= new Object();
+    private MongoConnector(){
+        morphia.mapPackage("Model");
+        datastore.ensureIndexes();
+    }
+
+    public static MongoConnector getInstance(){
+        if(instance == null){
+            synchronized (mutex){
+                if(instance==null) instance= new MongoConnector();
+            }
+        }
+        return instance;
+    }
+
     private static Logger logger = Logger.getLogger(MongoConnector.class.getName());
     public static String DB_NAME = "java2017";
     final Morphia morphia = new Morphia();
     public final Datastore datastore = morphia.createDatastore(new MongoClient(), DB_NAME);
 
-    public MongoConnector() {
-        morphia.mapPackage("Model");
-        datastore.ensureIndexes();
-    }
-
-    public static void setDbNameForDefault(){
+    public void setDbNameForDefault(){
         DB_NAME = "java2017";
     }
 
-    public static void setDbName(String dbName){
+    public void setDbName(String dbName){
         DB_NAME = dbName;
     }
 
