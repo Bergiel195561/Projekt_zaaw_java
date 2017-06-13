@@ -35,6 +35,7 @@ public class AddDepartmentCommand implements Command {
         Department department = builder.getDepartment();
         core.addDepartment(department);
 
+
     }
 
     @Override
