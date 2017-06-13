@@ -6,6 +6,7 @@ import Model.Team;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Klasa tworząca team
  */
 public class TeamBuilder {
     private Team team;

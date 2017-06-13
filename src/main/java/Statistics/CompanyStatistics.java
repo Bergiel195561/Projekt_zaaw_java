@@ -9,9 +9,17 @@ import java.util.HashSet;
 
 /**
  * Created by apple on 12/06/17.
+ *
+ * Klasa pobierająca dane i filtrująca je
  */
 public class CompanyStatistics {
 
+    /**
+     * Metoda pobierająca liczbę pracowników z danego company
+     *
+     * @param company wybrana Firma
+     * @return employee.size() ilośc pracowników
+     */
     public static int getNumberOfEmployees(Company company){
         HashSet<OrdinaryEmployee> employees = new HashSet<>();
         for (Department dep: company.getDepartments()) {
@@ -24,6 +32,12 @@ public class CompanyStatistics {
         return employees.size();
     }
 
+    /**
+     * Metoda zwaracająca dokładny opis firmy
+     *
+     * @param company
+     * @return dokładny opis firmy
+     */
     public static String getWholeCompanyDescription(Company company){
         StringBuilder builder = new StringBuilder();
         builder.append("Company "+ company.getName() + "\n");
@@ -36,6 +50,12 @@ public class CompanyStatistics {
         return builder.toString();
     }
 
+    /**
+     * Metoda zwaracająca dokładny opis działu
+     *
+     * @param department
+     * @return dokładny opis działu
+     */
     public static void getDepartmentDescription(Department department){
         HashSet<OrdinaryEmployee> set = new HashSet<>();
         for (Team team: department.getTeams()) {
@@ -52,6 +72,12 @@ public class CompanyStatistics {
 
     }
 
+    /**
+     * Metoda zwaracająca listę pracowników z danego działu jako String
+     *
+     * @param team
+     * @return String lista pracowników
+     */
     public static String listAllEmployeesFromTeam(Team team){
         StringBuilder builder = new StringBuilder();
         builder.append("Employees of " + team.getTypeDescription() + " department \n");

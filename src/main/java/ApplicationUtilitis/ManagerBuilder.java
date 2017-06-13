@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Klasa tworząca menadżera
  */
 public class ManagerBuilder {
     private Manager manager;
