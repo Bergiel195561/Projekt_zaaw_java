@@ -20,7 +20,7 @@ public class ApplicationCore {
     private Set<Team> teams = new HashSet<>();
 
     //region Getter
-    public Set<Company> getCompanies() {
+    public CustomHashSet<Company> getCompanies() {
         return companies;
     }
 

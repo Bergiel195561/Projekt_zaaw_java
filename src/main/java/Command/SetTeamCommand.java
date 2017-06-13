@@ -2,6 +2,7 @@ package Command;
 
 import ApplicationUtilitis.ApplicationCore;
 import Model.Department;
+import Model.OrdinaryEmployee;
 import Model.Team;
 
 import java.util.Scanner;
@@ -24,29 +25,31 @@ public class SetTeamCommand implements Command {
     @Override
     public void doAction(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        for (Department department : core.getDepartments()) {
-            System.out.println(department.toString());
+        for (Department department : core.getCompanies().get(0).getDepartments()) {
+            System.out.println(department.getName());
         }
 
         System.out.println("Department name: ");
         String departmentName = scanner.nextLine();
 
         for (Team team : core.getTeams()) {
-            System.out.println(team.toString());
+            System.out.println(team.getTeamUniqNumber());
         }
 
         System.out.println("Team uniq number: ");
         String teamId = scanner.nextLine();
 
 
+        Team foundTeam = null;
         boolean set = false;
-        for (Department department : core.getDepartments()) {
+        for (Department department : core.getCompanies().get(0).getDepartments()) {
             if (department.getName().equals(departmentName)) {
                 for (Team team : core.getTeams()) {
                     if (team.getTeamUniqNumber().equals(teamId)) {
                         if (!department.getTeams().contains(team)) {
                             department.getTeams().add(team);
                             set = true;
+                            foundTeam = team;
                             break;
                         } else {
                             System.out.println("This department include this team");
@@ -60,6 +63,8 @@ public class SetTeamCommand implements Command {
         }
         if (!set) {
             System.out.println("There is no such department or team");
+        } else {
+            core.getTeams().remove(foundTeam);
         }
     }
 
