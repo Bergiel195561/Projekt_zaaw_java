@@ -1,11 +1,14 @@
 package DB;
 
 import Model.Company;
+import Model.Team;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.dao.BasicDAO;
 import org.mongodb.morphia.query.Query;
+
+import java.util.List;
 
 /**
  * DAO dla firm
@@ -35,5 +38,15 @@ public class CompanyDao extends BasicDAO<Company, String> {
      */
     public Company findCompany(){
         return getDatastore().find(Company.class).get();
+    }
+
+    /**
+     * Pobieranie listy firm z bazy
+     * @return Lista firm
+     */
+    public List<Company> findAllCompanies(){
+        Query<Company> query = getDatastore().createQuery(Company.class);
+        List<Company> companies = query.asList();
+        return companies;
     }
 }
