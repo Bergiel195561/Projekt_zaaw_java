@@ -25,24 +25,29 @@ public class AddCompanyCommand implements Command {
     @Override
     public void doAction(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        if(core.getCompanies().size() <1) {
+            Scanner scanner = new Scanner(System.in);
 
-        CompanyBuilder builder = new CompanyBuilder();
-        System.out.println("Company name: ");
-        String companyName = scanner.nextLine();
-        System.out.println("Company city: ");
-        String companyCity = scanner.nextLine();
-        System.out.println("Company street: ");
-        String companyStreet = scanner.nextLine();
-        System.out.println("Company phone: ");
-        String companyPhone = scanner.nextLine();
-        builder.createCompany(companyName);
-        builder.setCompanyCity(companyCity);
-        builder.setCompanyStreet(companyStreet);
-        builder.setCompanyPhone(companyPhone);
+            CompanyBuilder builder = new CompanyBuilder();
+            System.out.println("Company name: ");
+            String companyName = scanner.nextLine();
+            System.out.println("Company city: ");
+            String companyCity = scanner.nextLine();
+            System.out.println("Company street: ");
+            String companyStreet = scanner.nextLine();
+            System.out.println("Company phone: ");
+            String companyPhone = scanner.nextLine();
+            builder.createCompany(companyName);
+            builder.setCompanyCity(companyCity);
+            builder.setCompanyStreet(companyStreet);
+            builder.setCompanyPhone(companyPhone);
 
-        Company company = builder.getCompany();
-        core.addCompany(company);
+            Company company = builder.getCompany();
+            core.addCompany(company);
+        }
+        else{
+            System.out.println("W bazie juz istnieje firma.");
+        }
     }
 
     @Override
