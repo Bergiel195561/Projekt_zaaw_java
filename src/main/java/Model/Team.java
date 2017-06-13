@@ -7,19 +7,20 @@ import org.mongodb.morphia.annotations.*;
 
 /**
  * Klasa odpowiedzialna za zespół pracowników w danym dziale
+ *
  * @author krystian
  */
 @Entity(noClassnameStored = true)
 public class Team {
     @Id
-    private ObjectId id;
+    private ObjectId id = new ObjectId();
 
     @Indexed(options = @IndexOptions(unique = true))
     private String teamUniqNumber;
     private TeamType type;
 
     @Reference
-    private Manager departmentLeader;
+    private Manager teamLeader;
 
     @Reference
     private CustomHashSet<OrdinaryEmployee> teamMembers = new CustomHashSet<OrdinaryEmployee>();
@@ -31,9 +32,8 @@ public class Team {
         this.type = type;
     }
 
-    public Team(TeamType type, Manager departmentLeader, CustomHashSet<OrdinaryEmployee> teamMembers) {
+    public Team(TeamType type, CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.type = type;
-        this.departmentLeader = departmentLeader;
         this.teamMembers = teamMembers;
     }
 
@@ -42,18 +42,17 @@ public class Team {
         this.type = type;
     }
 
-    public void setDepartmentLeader(Manager departmentLeader) {
-        this.departmentLeader = departmentLeader;
-    }
-
     public void setTeamMembers(CustomHashSet<OrdinaryEmployee> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public void setTeamLeader(Manager teamLeader) {
+        this.teamLeader = teamLeader;
     }
 
     public void setTeamUniqNumber(String teamUniqNumber) {
         this.teamUniqNumber = teamUniqNumber;
     }
-
     //endregion
 
     //region Getters
@@ -61,17 +60,44 @@ public class Team {
         return type;
     }
 
-    public Manager getDepartmentLeader() {
-        return departmentLeader;
+    public String getTypeDescription() {
+        switch(this.type){
+            case ADV:
+                return "ADV";
+            case DEV:
+                return "DEV";
+            case QA:
+                return "QA";
+            case TESTERS:
+                return "TESTERS";
+            case UX:
+                return "UX";
+            default:
+                return "Not identified";
+        }
     }
 
     public CustomHashSet<OrdinaryEmployee> getTeamMembers() {
         return teamMembers;
     }
 
+    public Manager getTeamLeader() {
+        return teamLeader;
+    }
+
     public String getTeamUniqNumber() {
         return teamUniqNumber;
     }
-
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "\n\tteamUniqNumber='" + teamUniqNumber + '\'' +
+                "\n\ttype=" + type +
+                "\n\tteamLeader=" + teamLeader +
+                "\n\tteamMembers= \n" + teamMembers +
+                "\n}\n";
+    }
 }

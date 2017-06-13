@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Jaromir
  */
 
-public abstract class Employee {
+public class Employee {
     @Id
     private ObjectId id = new ObjectId();
 
@@ -25,11 +25,12 @@ public abstract class Employee {
     protected String jobPosition;
     protected float salary;
     protected Date hireDate;
-    protected int departmentId;
 
     //region Getters
 
-    public String getPesel() {return pesel;}
+    public String getPesel() {
+        return pesel;
+    }
 
     public String getName() {
         return name;
@@ -40,6 +41,7 @@ public abstract class Employee {
     }
 
     public String getJobPosition() {
+        if(jobPosition == null) return "none";
         return jobPosition;
     }
 
@@ -49,10 +51,6 @@ public abstract class Employee {
 
     public Date getHireDate() {
         return hireDate;
-    }
-
-    public int getDepartmentId() {
-        return departmentId;
     }
     //endregion
 
@@ -81,10 +79,6 @@ public abstract class Employee {
     public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
-    }
     //endregion
 
     //region Constructors
@@ -108,6 +102,42 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "I am ";
+        return "Employee{" +
+                "\n\tpesel='" + pesel + '\'' +
+                "\n\tname='" + name + '\'' +
+                "\n\tsurname='" + surname + '\'' +
+                "\n\tjobPosition='" + jobPosition + '\'' +
+                "\n\tsalary=" + salary +
+                "\n\thireDate=" + hireDate +
+                "\n}\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (Float.compare(employee.salary, salary) != 0) return false;
+        if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
+        if (pesel != null ? !pesel.equals(employee.pesel) : employee.pesel != null) return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (surname != null ? !surname.equals(employee.surname) : employee.surname != null) return false;
+        if (jobPosition != null ? !jobPosition.equals(employee.jobPosition) : employee.jobPosition != null)
+            return false;
+        return hireDate != null ? hireDate.equals(employee.hireDate) : employee.hireDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (pesel != null ? pesel.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);
+        result = 31 * result + (salary != +0.0f ? Float.floatToIntBits(salary) : 0);
+        result = 31 * result + (hireDate != null ? hireDate.hashCode() : 0);
+        return result;
     }
 }

@@ -32,7 +32,14 @@ public class Manager extends Employee {
 
     @Override
     public String toString() {
-        return super.toString() + this.jobPosition + " [" + this.getName() + " " + this.getSurname() + "]";
+        return "Manager{" +
+                "\n\tpesel='" + pesel + '\'' +
+                "\n\tname='" + name + '\'' +
+                "\n\tsurname='" + surname + '\'' +
+                "\n\tjobPosition='" + jobPosition + '\'' +
+                "\n\tsalary=" + salary +
+                "\n\thireDate=" + hireDate +
+                "\n}\n";
     }
 
     //endregion
