@@ -36,8 +36,7 @@ public class CompanyCreate {
             list2.add(a);
         }
         t2.setTeamMembers(list2);
-        t.setDepartmentLeader(ma);
-        t2.setDepartmentLeader(ma);
+
 
         d.addTeam(t);
 
