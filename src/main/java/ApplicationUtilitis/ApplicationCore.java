@@ -48,6 +48,16 @@ public class ApplicationCore {
 
     public void addCompany(Company company) {
         companies.add(company);
+        for (Department dep: company.getDepartments()) {
+            addDepartment(dep);
+            for (Team team: dep.getTeams()) {
+                addTeam(team);
+                for(OrdinaryEmployee emp : team.getTeamMembers()){
+                    addEmployee(emp);
+                }
+                addManager(team.getTeamLeader());
+            }
+        }
     }
 
     public void addEmployee(Employee employee) {
