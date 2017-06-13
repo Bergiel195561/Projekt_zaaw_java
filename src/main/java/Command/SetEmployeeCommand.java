@@ -40,6 +40,7 @@ public class SetEmployeeCommand implements Command {
         String employeeHumanId = scanner.nextLine();
 
 
+        OrdinaryEmployee foundEmployee = null;
         boolean set = false;
         for (Team team : core.getTeams()) {
             if (team.getTeamUniqNumber().equals(teamId)) {
@@ -48,6 +49,7 @@ public class SetEmployeeCommand implements Command {
                         if (!team.getTeamMembers().contains(ordinaryEmployee)){
                             team.getTeamMembers().add(ordinaryEmployee);
                             set = true;
+                            foundEmployee = ordinaryEmployee;
                             break;
                         }
                         else {
@@ -62,6 +64,8 @@ public class SetEmployeeCommand implements Command {
         }
         if (!set){
             System.out.println("There is no such team or employee");
+        } else {
+            core.getOrdinaryEmployees().remove(foundEmployee);
         }
     }
 
