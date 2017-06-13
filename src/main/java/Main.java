@@ -42,6 +42,7 @@ public class Main {
         commandResolver.registerCommand(new SetTeamCommand(core));
         commandResolver.registerCommand(new DisplayDepartmentDescriptionCommand(core));
         commandResolver.registerCommand(new SetTeamManagerCommand(core));
+        commandResolver.registerCommand(new DisplayEmployeeDescriptionCommand(core));
         commandResolver.registerCommand(new DisplayEmployeeNumberCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
         commandResolver.registerCommand(new AddTeamCommand(core));
