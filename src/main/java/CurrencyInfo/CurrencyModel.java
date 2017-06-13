@@ -31,6 +31,9 @@ public class CurrencyModel {
     private String date;
     private HashMap<CurrencyType, Double> rates;
 
+    public CurrencyModel() {
+    }
+
     /**
      * Wyszukiwanie symbolu waluty po nazwie
      *
@@ -78,9 +81,10 @@ public class CurrencyModel {
 
     /**
      * Pobieranie ile bazowej waluty potrzeba na kupienie jednej lokalnej waluty
-     * @param rate Proporcja bazowej waluty do lokalnej
+     *
+     * @param rate          Proporcja bazowej waluty do lokalnej
      * @param localCurrency Lokalna waluta
-     * @return 
+     * @return
      */
     private String getNumberOfBaseCurrencyForOther(Double rate, CurrencyType localCurrency) {
         double localForBaseCurrency = 1 / rate;
