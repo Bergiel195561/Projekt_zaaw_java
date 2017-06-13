@@ -28,4 +28,12 @@ public class CompanyDao extends BasicDAO<Company, String> {
 
         return query.get();
     }
+
+    /**
+     * Pobiera firme z bazy
+     * @return Znaleziona firma
+     */
+    public Company findCompany(){
+        return getDatastore().find(Company.class).get();
+    }
 }
