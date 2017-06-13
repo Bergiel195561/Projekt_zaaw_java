@@ -31,6 +31,7 @@ public class Main {
     }
 
     private void init() {
+        commandResolver.registerCommand(new ActionCommand(core, mongoConnector));
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new SaveToDBCommand(core, new CascadeSave(mongoConnector)));
         commandResolver.registerCommand(new AddDepartmentCommand(core));
