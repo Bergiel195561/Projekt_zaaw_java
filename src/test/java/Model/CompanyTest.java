@@ -130,8 +130,6 @@ public class CompanyTest {
         assertNotNull(c);
     }
 
-
-
     @Test
     public void testToString(){
         //Given
@@ -149,9 +147,17 @@ public class CompanyTest {
 
         //Then
         assertEquals(expectedResult,result);
-
-
     }
+
+    @Test
+    public void getIdTest(){
+        //When
+        Object result = company.getId();
+
+        //Then
+        assertNotNull(result);
+    }
+
 
 
 
