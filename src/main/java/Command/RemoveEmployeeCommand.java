@@ -9,19 +9,19 @@ import java.util.Scanner;
 /**
  * Created by Bartek on 13.06.2017.
  */
-public class DeleteEmployeeCommand implements Command {
+public class RemoveEmployeeCommand implements Command {
     private ApplicationCore core;
     private MongoConnector mongoConnector;
 
 
-    public DeleteEmployeeCommand(ApplicationCore core, MongoConnector mongoConnector) {
+    public RemoveEmployeeCommand(ApplicationCore core, MongoConnector mongoConnector) {
         this.core = core;
         this.mongoConnector = mongoConnector;
     }
 
     @Override
     public String getCommandName() {
-        return "delete_employee";
+        return "remove_employee";
     }
 
     @Override
@@ -58,11 +58,11 @@ public class DeleteEmployeeCommand implements Command {
 
     @Override
     public String getShortHelp() {
-        return "delete_employee - delete employee";
+        return "remove_employee - remove employee";
     }
 
     @Override
     public String getLongHelp() {
-        return "delete_employee - delete employee from app";
+        return "remove_employee - remove employee from app and database";
     }
 }

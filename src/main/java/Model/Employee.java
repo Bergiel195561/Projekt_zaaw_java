@@ -103,13 +103,13 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "pesel='" + pesel + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", jobPosition='" + jobPosition + '\'' +
-                ", salary=" + salary +
-                ", hireDate=" + hireDate +
-                '}';
+                "\n\tpesel='" + pesel + '\'' +
+                "\n\tname='" + name + '\'' +
+                "\n\tsurname='" + surname + '\'' +
+                "\n\tjobPosition='" + jobPosition + '\'' +
+                "\n\tsalary=" + salary +
+                "\n\thireDate=" + hireDate +
+                "\n}\n";
     }
 
     @Override

@@ -1,6 +1,8 @@
 import ApplicationUtilitis.ApplicationCore;
 import Command.*;
+import DB.CascadeSave;
 import DB.MongoConnector;
+import Model.Company;
 
 import java.util.Scanner;
 
@@ -16,11 +18,13 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main(new ApplicationCore(), new CommandResolver(), MongoConnector.getInstance());
+
         main.start(args);
     }
 
     public Main(ApplicationCore core, CommandResolver commandResolver, MongoConnector mongoConnector) {
         this.core = core;
+        this.core.addCompany(mongoConnector.getDatastore().find(Company.class).get());
         this.commandResolver = commandResolver;
         this.mongoConnector = mongoConnector;
         this.mongoConnector.setDbNameForDefault();
@@ -28,15 +32,21 @@ public class Main {
 
     private void init() {
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
-        commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
+        commandResolver.registerCommand(new SaveToDBCommand(core, new CascadeSave(mongoConnector)));
         commandResolver.registerCommand(new AddDepartmentCommand(core));
-        commandResolver.registerCommand(new DeleteEmployeeCommand(core, mongoConnector));
+        commandResolver.registerCommand(new RemoveEmployeeCommand(core, mongoConnector));
+        commandResolver.registerCommand(new SearchEmployeeByPeselCommand(core));
         commandResolver.registerCommand(new AddManagerCommand(core));
         commandResolver.registerCommand(new SetCompanyManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));
         commandResolver.registerCommand(new SetEmployeeCommand(core));
+        commandResolver.registerCommand(new DisplayCompanyDescriptionCommand(core));
+        commandResolver.registerCommand(new SetDepartmentCommand(core));
         commandResolver.registerCommand(new SetTeamCommand(core));
+        commandResolver.registerCommand(new DisplayDepartmentDescriptionCommand(core));
         commandResolver.registerCommand(new SetTeamManagerCommand(core));
+        commandResolver.registerCommand(new DisplayEmployeeDescriptionCommand(core));
+        commandResolver.registerCommand(new DisplayEmployeeNumberCommand(core));
         commandResolver.registerCommand(new AddCompanyCommand(core));
         commandResolver.registerCommand(new AddTeamCommand(core));
         commandResolver.registerCommand(new InfoCommand());

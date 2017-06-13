@@ -79,7 +79,10 @@ public class DepartmentTest {
     @Test
     public void testToString(){
         //Given
-        String expectedResult = "Department{name='" + "Department" + "', teams=[]}";
+        String expectedResult = "Department{" +
+                "\n\tname='" + "Department" + '\'' +
+                "\n\tteams= \n" + "[]" +
+                "\n}\n";;
 
         //When
         String result = department.toString();

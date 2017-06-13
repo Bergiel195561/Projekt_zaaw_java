@@ -4,6 +4,8 @@ import com.sun.corba.se.impl.encoding.BufferManagerFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +48,9 @@ public class CompanyTest {
         // Then
         assertNotNull(company.getCeo());
     }
+
     @Test
-    public void setName(){
+    public void setName() {
         // Given
         String name = "CompanyTest";
 
@@ -55,11 +58,11 @@ public class CompanyTest {
         company.setName(name);
 
         // Then
-        assertEquals(name,company.getName());
+        assertEquals(name, company.getName());
     }
 
     @Test
-    public void setStreet(){
+    public void setStreet() {
         // Given
         String street = "CompanyStreeTest";
 
@@ -67,11 +70,11 @@ public class CompanyTest {
         company.setStreet(street);
 
         // Then
-        assertEquals(street,company.getStreet());
+        assertEquals(street, company.getStreet());
     }
 
     @Test
-    public void setCity(){
+    public void setCity() {
         // Given
         String city = "CompanyCityTest";
 
@@ -79,11 +82,11 @@ public class CompanyTest {
         company.setCity(city);
 
         // Then
-        assertEquals(company.getCity(),city);
+        assertEquals(company.getCity(), city);
     }
 
     @Test
-    public void setPhone(){
+    public void setPhone() {
         // Given
         String phone = "123456789";
 
@@ -91,31 +94,31 @@ public class CompanyTest {
         company.setPhone(phone);
 
         // Then
-        assertEquals(phone,company.getPhone());
+        assertEquals(phone, company.getPhone());
     }
 
     @Test
     public void setDepartments() {
         // Given
-       List<Department> departments = new ArrayList<>();
-       for (int i=0; i<3; i++){
-           departments.add(new Department());
-       }
-       int expectedSize = 3;
+        List<Department> departments = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            departments.add(new Department());
+        }
+        int expectedSize = 3;
 
         // When
         company.setDepartments(departments);
 
         // Then
-        assertEquals(expectedSize,company.getDepartments().size());
+        assertEquals(expectedSize, company.getDepartments().size());
         assertTrue(company.getDepartments().equals(departments));
     }
 
     @Test
-    public void createCompany(){
+    public void createCompany() {
         //Given
         List<Department> departments = new ArrayList<>();
-        for (int i=0; i<3; i++){
+        for (int i = 0; i < 3; i++) {
             departments.add(new Department());
         }
 
@@ -131,34 +134,34 @@ public class CompanyTest {
     }
 
     @Test
-    public void testToString(){
+    public void testToString() {
         //Given
         company.setName("Company");
         company.setCity("CompanyCity");
-        String expectedResult = "Company{name='Company', " +
-                "street='null', " +
-                "city='CompanyCity', " +
-                "phone='null', " +
-                "ceo=null, " +
-                "departments=[]}";
+        String expectedResult = "Company{" +
+                "\n\tname='" + "Company" + '\'' +
+                "\n\tstreet='" + "null" + '\'' +
+                "\n\tcity='" + "CompanyCity" + '\'' +
+                "\n\tphone='" + "null" + '\'' +
+                "\n\tceo=" + "null" +
+                "\n\tdepartments=" + "[]" +
+                "\n}\n";
 
         //When
         String result = company.toString();
 
         //Then
-        assertEquals(expectedResult,result);
+        assertThat(expectedResult).containsSequence(result);
     }
 
     @Test
-    public void getIdTest(){
+    public void getIdTest() {
         //When
         Object result = company.getId();
 
         //Then
         assertNotNull(result);
     }
-
-
 
 
 }

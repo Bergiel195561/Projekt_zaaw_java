@@ -55,9 +55,9 @@ public class Department {
     public String toString() {
 
         return "Department{" +
-                "name='" + name + '\'' +
-                ", teams=" + teams +
-                '}';
+                "\n\tname='" + name + '\'' +
+                "\n\tteams= \n" + teams +
+                "\n}\n";
     }
 
     @Override

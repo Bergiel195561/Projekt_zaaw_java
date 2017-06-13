@@ -43,7 +43,14 @@ public class ManagerTest {
     public void testToString() {
         //Given
         Manager man = new Manager(name, surname, humanId);
-        String expectedResult = "Manager{pesel='ManagerId', name='Manager', surname='Manager', jobPosition='null', salary=0.0, hireDate=null}";
+        String expectedResult = "Manager{" +
+                "\n\tpesel='" + "ManagerId" + '\'' +
+                "\n\tname='" + "Manager" + '\'' +
+                "\n\tsurname='" + "Manager" + '\'' +
+                "\n\tjobPosition='" + null + '\'' +
+                "\n\tsalary=" + 0.0 +
+                "\n\thireDate=" + null +
+                "\n}\n";
 
         //When
         String result = man.toString();
