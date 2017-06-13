@@ -56,6 +56,7 @@ public class Main {
         commandResolver.registerCommand(new InfoCommand());
         commandResolver.registerCommand(new PrintCommand(core));
         commandResolver.registerCommand(new HelpCommand());
+        commandResolver.registerCommand(new GetCurrencyCommand());
     }
 
     public void start(String[] args) {
