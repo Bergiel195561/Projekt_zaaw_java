@@ -23,23 +23,8 @@ public class DisplayEmployeeNumberCommand implements Command {
 
     @Override
     public void doAction(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Company name: ");
-        String companyName = scanner.nextLine();
-
-        boolean set = false;
-
-        for (Company company : core.getCompanies()) {
-            if (company.getName().equals(companyName)) {
-                System.out.println("Employees number for " + companyName + ": " + CompanyStatistics.getNumberOfEmployees(company));
-                set = true;
-                break;
-            }
-        }
-
-        if (!set) {
-            System.out.println("There is no such company");
-        }
+        Company company = core.getCompanies().get(0);
+        System.out.println("Employees number for " + company.getName() + ": " + CompanyStatistics.getNumberOfEmployees(company));
     }
 
     @Override
