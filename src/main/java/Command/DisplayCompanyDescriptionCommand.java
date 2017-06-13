@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 13.06.2017.
+ * Komenda odpowiedzialna za wyswietlenie opisu firmy
  */
 public class DisplayCompanyDescriptionCommand implements Command {
     private ApplicationCore core;

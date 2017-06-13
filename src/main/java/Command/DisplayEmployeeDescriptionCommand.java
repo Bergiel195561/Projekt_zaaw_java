@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 13.06.2017.
+ *  * Komenda odpowiedzialna za wyswietlenie opisu pracownika
  */
 public class DisplayEmployeeDescriptionCommand implements Command {
     private ApplicationCore core;

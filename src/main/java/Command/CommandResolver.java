@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
+ * Klasa obslugujaca komendy
  */
 public class CommandResolver {
 

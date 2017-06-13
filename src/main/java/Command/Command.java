@@ -2,6 +2,7 @@ package Command;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
+ * Interfejs poleceń
  */
 public interface Command {
 
