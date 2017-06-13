@@ -82,12 +82,12 @@ public class Company {
     @Override
     public String toString() {
         return "Company{" +
-                "name='" + name + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", phone='" + phone + '\'' +
-                ", ceo=" + ceo +
-                ", departments=" + departments +
-                '}';
+                "\n\tname='" + name + '\'' +
+                "\n\tstreet='" + street + '\'' +
+                "\n\tcity='" + city + '\'' +
+                "\n\tphone='" + phone + '\'' +
+                "\n\tceo=" + ceo +
+                "\n\tdepartments=" + departments +
+                "\n}\n";
     }
 }
