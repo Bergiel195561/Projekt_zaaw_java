@@ -1,6 +1,7 @@
 package ApplicationUtilitis;
 
 import Model.*;
+import Utils.CustomHashSet;
 
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Set;
  */
 public class ApplicationCore {
 
-    private Set<Company> companies = new HashSet<>();
+    private CustomHashSet<Company> companies = new CustomHashSet<>();
     private Set<Department> departments = new HashSet<>();
     private Set<Employee> employees = new HashSet<>();
     private Set<Manager> managers = new HashSet<>();
@@ -19,7 +20,7 @@ public class ApplicationCore {
     private Set<Team> teams = new HashSet<>();
 
     //region Getter
-    public Set<Company> getCompanies() {
+    public CustomHashSet<Company> getCompanies() {
         return companies;
     }
 
@@ -77,6 +78,7 @@ public class ApplicationCore {
     }
 
     public void addDepartment(Department department) {
+        companies.get(0).addDepartment(department);
         departments.add(department);
     }
 

@@ -25,16 +25,26 @@ public class DisplayEmployeeDescriptionCommand implements Command {
     @Override
     public void doAction(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        for (Department d : core.getCompanies().get(0).getDepartments()) {
+            System.out.println("Dział: " + d.getName());
+            System.out.println("UniqID : TeamType");
+            System.out.println("-----------------\n");
+            for (Team team : d.getTeams()) {
+                System.out.println(team.getTeamUniqNumber() + " : " + team.getType());
+            }
+            System.out.println("\n\n");
+        }
         System.out.println("Team uniq number: ");
         String teamId = scanner.nextLine();
 
         boolean set = false;
-
-        for (Team team : core.getTeams()) {
-            if (team.getTeamUniqNumber().equals(teamId)) {
-                System.out.println(CompanyStatistics.listAllEmployeesFromTeam(team));
-                set = true;
-                break;
+        for (Department d : core.getCompanies().get(0).getDepartments()) {
+            for (Team team : d.getTeams()) {
+                if (team.getTeamUniqNumber().equals(teamId)) {
+                    System.out.println(CompanyStatistics.listAllEmployeesFromTeam(team));
+                    set = true;
+                    break;
+                }
             }
         }
 
