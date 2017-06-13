@@ -28,10 +28,11 @@ public class SetEmployeeCommand implements Command {
         for (Department d : core.getCompanies().get(0).getDepartments()){
             System.out.println("Dział: " + d.getName());
             System.out.println("UniqID : TeamType");
+            System.out.println("-----------------\n");
             for (Team team : d.getTeams()) {
                 System.out.println(team.getTeamUniqNumber() + " : " + team.getType());
             }
-            System.out.println("\n\n");
+            System.out.println("\n");
         }
 
         System.out.println("Team uniq number: ");
