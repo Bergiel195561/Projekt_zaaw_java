@@ -4,6 +4,7 @@ import Model.Company;
 import Model.Department;
 import Model.OrdinaryEmployee;
 import Model.Team;
+import Utils.CustomHashSet;
 
 import java.util.HashSet;
 
@@ -11,6 +12,18 @@ import java.util.HashSet;
  * Created by apple on 12/06/17.
  */
 public class CompanyStatistics {
+
+    public static CustomHashSet<OrdinaryEmployee> getEmployees(Company company){
+        CustomHashSet<OrdinaryEmployee> employees = new CustomHashSet<>();
+        for (Department dep: company.getDepartments()) {
+            for (Team team: dep.getTeams() ){
+                for (OrdinaryEmployee emp : team.getTeamMembers()) {
+                    employees.add(emp);
+                }
+            }
+        }
+        return employees;
+    }
 
     public static int getNumberOfEmployees(Company company){
         HashSet<OrdinaryEmployee> employees = new HashSet<>();

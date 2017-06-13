@@ -33,10 +33,12 @@ public class SetCompanyManagerCommand implements Command {
         String managerHumanId = scanner.nextLine();
 
         boolean set = false;
+        Manager foudManager = null;
         for (Manager manager : core.getManagers()) {
             if (manager.getPesel().equals(managerHumanId)) {
                 core.getCompanies().get(0).setCeo(manager);
                 set = true;
+                foudManager = manager;
                 break;
             }
         }
@@ -44,6 +46,8 @@ public class SetCompanyManagerCommand implements Command {
 
         if (!set) {
             System.out.println("There is no such manager");
+        } else {
+            core.getManagers().remove(foudManager);
         }
     }
 

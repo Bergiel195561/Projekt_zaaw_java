@@ -23,23 +23,7 @@ public class DisplayCompanyDescriptionCommand implements Command {
 
     @Override
     public void doAction(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Company name: ");
-        String companyName = scanner.nextLine();
-
-        boolean set = false;
-
-        for (Company company : core.getCompanies()) {
-            if (company.getName().equals(companyName)) {
-                System.out.println(CompanyStatistics.getWholeCompanyDescription(company));
-                set = true;
-                break;
-            }
-        }
-
-        if (!set) {
-            System.out.println("There is no such company");
-        }
+        System.out.println(CompanyStatistics.getWholeCompanyDescription(core.getCompanies().get(0)));
     }
 
     @Override
