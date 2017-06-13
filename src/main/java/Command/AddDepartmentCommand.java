@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Komenda odpowiedzialna za dodanie działu
  */
 public class AddDepartmentCommand implements Command {
 

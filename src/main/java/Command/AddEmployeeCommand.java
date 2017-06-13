@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Komenda odpowiedzialna za dodanie pracownika
  */
 public class AddEmployeeCommand implements Command {
 

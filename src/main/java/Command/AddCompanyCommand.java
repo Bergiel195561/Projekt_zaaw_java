@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
+ * Komenda odpowiedzialna za dodanie firmy
  */
 public class AddCompanyCommand implements Command {
 

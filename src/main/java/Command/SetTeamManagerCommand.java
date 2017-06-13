@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Komenda odpowiedzialna za ustawienie menadzera
  */
 public class SetTeamManagerCommand implements Command {
     private ApplicationCore core;

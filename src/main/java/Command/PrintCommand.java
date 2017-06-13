@@ -5,6 +5,7 @@ import Model.*;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
+ * Komenda odpowiedzialna za wyswietlanie
  */
 public class PrintCommand implements Command {
 

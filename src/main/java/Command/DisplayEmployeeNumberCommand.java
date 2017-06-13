@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 13.06.2017.
+ *  * Komenda odpowiedzialna zaw wyswietlenie liczby pracownikow
  */
 public class DisplayEmployeeNumberCommand implements Command {
     private ApplicationCore core;

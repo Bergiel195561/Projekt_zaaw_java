@@ -7,6 +7,7 @@ import Model.*;
 
 /**
  * Created by Bartek on 11.06.2017.
+ * Komenda odpowiedzialna za zapis do bazy
  */
 public class SaveToDBCommand implements Command {
     private ApplicationCore core;

@@ -4,6 +4,7 @@ import Model.Department;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Klasa tworząca dział
  */
 public class DepartmentBuilder {
     private Department department;

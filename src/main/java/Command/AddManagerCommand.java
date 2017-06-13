@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Komenda odpowiedzialna za dodanie managera
  */
 public class AddManagerCommand implements Command {
     private ApplicationCore core;

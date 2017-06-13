@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 13.06.2017.
+ * Komenda odpowiedzialna za pobranie pracownika po peselu
  */
 public class SearchEmployeeByPeselCommand implements Command {
     private ApplicationCore core;

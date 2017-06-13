@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by Bartek on 12.06.2017.
+ * Komenda odpowiedzialna za dodanie team
  */
 public class AddTeamCommand implements Command {
     private static Logger logger = Logger.getLogger(AddTeamCommand.class.getName());

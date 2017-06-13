@@ -7,6 +7,7 @@ import Model.OrdinaryEmployee;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
+ * Klasa tworząca firmę
  */
 public class CompanyBuilder {
     private Company company;

@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 /**
  * Created by Bartek on 13.06.2017.
+ * Komenda odpowiedzialna za usuwanie pracownika
  */
 public class RemoveEmployeeCommand implements Command {
     private ApplicationCore core;

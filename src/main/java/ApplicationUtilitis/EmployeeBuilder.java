@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * Created by Bartek on 11.06.2017.
+ * Klasa tworząca pracownika
  */
 public class EmployeeBuilder {
     private OrdinaryEmployee employee;

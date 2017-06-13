@@ -2,6 +2,7 @@ package Command;
 
 /**
  * Created by bartekstolinski on 25/04/2017.
+ * Komenda odpowiedzialna za wyswietlenie opisu działu
  */
 public class InfoCommand implements Command {
 

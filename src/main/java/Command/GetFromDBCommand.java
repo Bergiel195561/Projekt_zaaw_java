@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Bartek on 10.06.2017.
+ * Komenda odpowiedzialna za pobranie z bazy
  */
 public class GetFromDBCommand implements Command {
     private ApplicationCore core;
