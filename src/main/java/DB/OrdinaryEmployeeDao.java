@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class OrdinaryEmployeeDao extends BasicDAO<OrdinaryEmployee, String> {
 
-    protected OrdinaryEmployeeDao(Datastore ds) {
+    public OrdinaryEmployeeDao(Datastore ds) {
         super(ds);
     }
 

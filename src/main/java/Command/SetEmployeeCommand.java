@@ -1,6 +1,7 @@
 package Command;
 
 import ApplicationUtilitis.ApplicationCore;
+import Model.Department;
 import Model.OrdinaryEmployee;
 import Model.Team;
 
@@ -25,8 +26,14 @@ public class SetEmployeeCommand implements Command {
     @Override
     public void doAction(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        for (Team team : core.getTeams()) {
-            System.out.println(team.toString());
+        for (Department d : core.getCompanies().get(0).getDepartments()){
+            System.out.println("Dział: " + d.getName());
+            System.out.println("UniqID : TeamType");
+            System.out.println("-----------------\n");
+            for (Team team : d.getTeams()) {
+                System.out.println(team.getTeamUniqNumber() + " : " + team.getType());
+            }
+            System.out.println("\n");
         }
 
         System.out.println("Team uniq number: ");
@@ -34,7 +41,7 @@ public class SetEmployeeCommand implements Command {
 
 
         for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
-            System.out.println(ordinaryEmployee.toString());
+            System.out.println(ordinaryEmployee.getName() + " : " + ordinaryEmployee.getPesel());
         }
 
         System.out.println("Employee pesel: ");
@@ -43,26 +50,29 @@ public class SetEmployeeCommand implements Command {
 
         OrdinaryEmployee foundEmployee = null;
         boolean set = false;
-        for (Team team : core.getTeams()) {
-            if (team.getTeamUniqNumber().equals(teamId)) {
-                for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
-                    if (ordinaryEmployee.getPesel().equals(employeeHumanId)) {
-                        if (!team.getTeamMembers().contains(ordinaryEmployee)){
-                            team.getTeamMembers().add(ordinaryEmployee);
-                            set = true;
-                            foundEmployee = ordinaryEmployee;
-                            break;
-                        }
-                        else {
-                            System.out.println("This team employs this man");
-                            set = true;
-                            break;
+        for (Department d : core.getCompanies().get(0).getDepartments()){
+            for (Team team : d.getTeams()) {
+                if (team.getTeamUniqNumber().equals(teamId)) {
+                    for (OrdinaryEmployee ordinaryEmployee : core.getOrdinaryEmployees()) {
+                        if (ordinaryEmployee.getPesel().equals(employeeHumanId)) {
+                            if (!team.getTeamMembers().contains(ordinaryEmployee)){
+                                team.getTeamMembers().add(ordinaryEmployee);
+                                set = true;
+                                foundEmployee = ordinaryEmployee;
+                                break;
+                            }
+                            else {
+                                System.out.println("This team employs this man");
+                                set = true;
+                                break;
+                            }
                         }
                     }
+                    break;
                 }
-                break;
             }
         }
+
         if (!set){
             System.out.println("There is no such team or employee");
         } else {

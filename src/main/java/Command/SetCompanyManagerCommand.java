@@ -25,38 +25,30 @@ public class SetCompanyManagerCommand implements Command {
     @Override
     public void doAction(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        for (Company company : core.getCompanies()) {
-            System.out.println(company.toString());
-        }
-
-        System.out.println("Company name: ");
-        String companyName = scanner.nextLine();
-
 
         for (Manager manager : core.getManagers()) {
-            System.out.println(manager.toString());
+            System.out.println(manager.getPesel());
         }
 
         System.out.println("Manager pesel: ");
         String managerHumanId = scanner.nextLine();
 
         boolean set = false;
-
-        for (Company company : core.getCompanies()) {
-            if (company.getName().equals(companyName)) {
-                for (Manager manager : core.getManagers()) {
-                    if (manager.getPesel().equals(managerHumanId)) {
-                        company.setCeo(manager);
-                        set = true;
-                        break;
-                    }
-                }
+        Manager foudManager = null;
+        for (Manager manager : core.getManagers()) {
+            if (manager.getPesel().equals(managerHumanId)) {
+                core.getCompanies().get(0).setCeo(manager);
+                set = true;
+                foudManager = manager;
                 break;
             }
         }
 
-        if(!set){
-            System.out.println("There is no such company or manager");
+
+        if (!set) {
+            System.out.println("There is no such manager");
+        } else {
+            core.getManagers().remove(foudManager);
         }
     }
 

@@ -4,6 +4,7 @@ import Model.Company;
 import Model.Department;
 import Model.OrdinaryEmployee;
 import Model.Team;
+import Utils.CustomHashSet;
 
 import java.util.HashSet;
 
@@ -13,6 +14,23 @@ import java.util.HashSet;
  * Klasa pobierająca dane i filtrująca je
  */
 public class CompanyStatistics {
+
+    /**
+     * Pobieranie listy pracownikow w firmie
+     * @param company
+     * @return
+     */
+    public static CustomHashSet<OrdinaryEmployee> getEmployees(Company company){
+        CustomHashSet<OrdinaryEmployee> employees = new CustomHashSet<>();
+        for (Department dep: company.getDepartments()) {
+            for (Team team: dep.getTeams() ){
+                for (OrdinaryEmployee emp : team.getTeamMembers()) {
+                    employees.add(emp);
+                }
+            }
+        }
+        return employees;
+    }
 
     /**
      * Metoda pobierająca liczbę pracowników z danego company

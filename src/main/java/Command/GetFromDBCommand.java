@@ -27,22 +27,10 @@ public class GetFromDBCommand implements Command {
     @Override
     public void doAction(String[] args) {
         List<Company> companies = mongoConnector.getDatastore().find(Company.class).asList();
+        if (companies.size() == 0) {
+            companies.add(new Company());
+        }
         core.addAllCompanies(companies);
-
-        List<Department> departments = mongoConnector.getDatastore().find(Department.class).asList();
-        core.addAllDepartments(departments);
-
-        List<Employee> employees = mongoConnector.getDatastore().find(Employee.class).asList();
-        core.addAllEmployees(employees);
-
-        List<Manager> managers = mongoConnector.getDatastore().find(Manager.class).asList();
-        core.addAllManagers(managers);
-
-        List<OrdinaryEmployee> ordinaryEmployees = mongoConnector.getDatastore().find(OrdinaryEmployee.class).asList();
-        core.addAllOrdinaryEmployees(ordinaryEmployees);
-
-        List<Team> teams = mongoConnector.getDatastore().find(Team.class).asList();
-        core.addAllTeams(teams);
     }
 
     @Override

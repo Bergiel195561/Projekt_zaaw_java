@@ -2,7 +2,10 @@ package Command;
 
 import ApplicationUtilitis.ApplicationCore;
 import DB.MongoConnector;
+import DB.OrdinaryEmployeeDao;
 import Model.*;
+import Statistics.CompanyStatistics;
+import Utils.CustomHashSet;
 
 import java.util.Scanner;
 
@@ -27,33 +30,34 @@ public class RemoveEmployeeCommand implements Command {
 
     @Override
     public void doAction(String[] args) {
+        OrdinaryEmployeeDao dao = new OrdinaryEmployeeDao(mongoConnector.getDatastore());
+
         Scanner scanner = new Scanner(System.in);
-        for (Employee employee : core.getEmployees()) {
-            System.out.println(employee.toString());
+
+        CustomHashSet<OrdinaryEmployee> employees = CompanyStatistics.getEmployees(core.getCompanies().get(0));
+
+        for (Employee employee : employees) {
+            System.out.println(employee.getName() + " : " + employee.getPesel());
         }
 
         System.out.println("Employee pesel: ");
         String employeePesel = scanner.nextLine();
+        OrdinaryEmployee employeeByPesel = dao.getEmployeeByPesel(employeePesel);
 
-        int size = core.getOrdinaryEmployees().size();
-        for (Team team : core.getTeams()) {
-            team.getTeamMembers().removeIf(ordinaryEmployee -> {
-                if (ordinaryEmployee.getPesel().equals(employeePesel)) {
-                    mongoConnector.getDatastore().delete(ordinaryEmployee);
-                    return true;
-                } else return false;
-            });
-        }
-
-        core.getOrdinaryEmployees().removeIf(ordinaryEmployee -> {
-            if (ordinaryEmployee.getPesel().equals(employeePesel)) {
-                mongoConnector.getDatastore().delete(ordinaryEmployee);
-                return true;
-            } else return false;
-        });
-
-        if (core.getOrdinaryEmployees().size() == size) {
-            System.out.println("There is no such employee");
+        if (employeeByPesel != null){
+            for (Department d : core.getCompanies().get(0).getDepartments()){
+                for (Team t : d.getTeams()){
+                    t.getTeamMembers().removeIf(ordinaryEmployee -> {
+                        if (ordinaryEmployee.getPesel().equals(employeePesel)) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                }
+            }
+        } else {
+            System.out.println("Nie znaleziono pracownika do usuniecia");
         }
     }
 

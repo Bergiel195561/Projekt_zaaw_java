@@ -1,7 +1,9 @@
 package Command;
 
 import ApplicationUtilitis.ApplicationCore;
+import Model.Department;
 import Model.Manager;
+import Model.OrdinaryEmployee;
 import Model.Team;
 
 import java.util.Scanner;
@@ -25,38 +27,47 @@ public class SetTeamManagerCommand implements Command {
     @Override
     public void doAction(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        for (Team team : core.getTeams()) {
-            System.out.println(team.toString());
+        for (Department d : core.getCompanies().get(0).getDepartments()) {
+            System.out.println("Dział: " + d.getName());
+            System.out.println("UniqID : TeamType");
+            System.out.println("-----------------\n");
+            for (Team team : d.getTeams()) {
+                System.out.println(team.getTeamUniqNumber() + " : " + team.getType());
+            }
+            System.out.println("\n\n");
         }
-
         System.out.println("Team uniq numer: ");
         String teamId = scanner.nextLine();
 
-
         for (Manager manager : core.getManagers()) {
-            System.out.println(manager.toString());
+            System.out.println(manager.getPesel() + " " + manager.getName());
         }
 
         System.out.println("Manager pesel: ");
         String managerHumanId = scanner.nextLine();
 
         boolean set = false;
-
-        for (Team team : core.getTeams()) {
-            if (team.getTeamUniqNumber().equals(teamId)) {
-                for (Manager manager : core.getManagers()) {
-                    if (manager.getPesel().equals(managerHumanId)) {
-                        team.setTeamLeader(manager);
-                        set = true;
-                        break;
+        Manager foundManager = null;
+        for (Department department : core.getCompanies().get(0).getDepartments()) {
+            for (Team team : department.getTeams()) {
+                if (team.getTeamUniqNumber().equals(teamId)) {
+                    for (Manager manager : core.getManagers()) {
+                        if (manager.getPesel().equals(managerHumanId)) {
+                            team.setTeamLeader(manager);
+                            set = true;
+                            foundManager = manager;
+                            break;
+                        }
                     }
+                    break;
                 }
-                break;
             }
         }
 
         if (!set) {
             System.out.println("There is no such team or manager");
+        } else {
+            core.getManagers().remove(foundManager);
         }
     }
 

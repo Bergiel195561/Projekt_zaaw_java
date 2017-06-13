@@ -2,8 +2,12 @@ import ApplicationUtilitis.ApplicationCore;
 import Command.*;
 import DB.CascadeSave;
 import DB.MongoConnector;
-import Model.Company;
+import Helpers.TeamType;
+import Model.*;
+import Utils.CustomHashSet;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -24,13 +28,14 @@ public class Main {
 
     public Main(ApplicationCore core, CommandResolver commandResolver, MongoConnector mongoConnector) {
         this.core = core;
-        this.core.addCompany(mongoConnector.getDatastore().find(Company.class).get());
         this.commandResolver = commandResolver;
         this.mongoConnector = mongoConnector;
         this.mongoConnector.setDbNameForDefault();
+//        this.core.addCompany(mongoConnector.getDatastore().find(Company.class).get());
     }
 
     private void init() {
+        commandResolver.registerCommand(new ActionCommand(core, mongoConnector));
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new SaveToDBCommand(core, new CascadeSave(mongoConnector)));
         commandResolver.registerCommand(new AddDepartmentCommand(core));
@@ -41,7 +46,6 @@ public class Main {
         commandResolver.registerCommand(new AddEmployeeCommand(core));
         commandResolver.registerCommand(new SetEmployeeCommand(core));
         commandResolver.registerCommand(new DisplayCompanyDescriptionCommand(core));
-        commandResolver.registerCommand(new SetDepartmentCommand(core));
         commandResolver.registerCommand(new SetTeamCommand(core));
         commandResolver.registerCommand(new DisplayDepartmentDescriptionCommand(core));
         commandResolver.registerCommand(new SetTeamManagerCommand(core));
@@ -52,6 +56,7 @@ public class Main {
         commandResolver.registerCommand(new InfoCommand());
         commandResolver.registerCommand(new PrintCommand(core));
         commandResolver.registerCommand(new HelpCommand());
+        commandResolver.registerCommand(new GetCurrencyCommand());
     }
 
     public void start(String[] args) {
