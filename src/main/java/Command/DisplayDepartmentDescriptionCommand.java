@@ -24,12 +24,14 @@ public class DisplayDepartmentDescriptionCommand implements Command {
     @Override
     public void doAction(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        for (Department department : core.getCompanies().get(0).getDepartments()) {
+            System.out.println(department.getName());
+        }
         System.out.println("Department name: ");
         String departmentName = scanner.nextLine();
 
         boolean set = false;
-
-        for (Department department : core.getDepartments()) {
+        for (Department department : core.getCompanies().get(0).getDepartments()) {
             if (department.getName().equals(departmentName)) {
                 CompanyStatistics.getDepartmentDescription(department);
                 set = true;
