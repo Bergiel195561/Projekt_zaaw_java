@@ -90,5 +90,76 @@ public class TeamTest {
         assertEquals(expectedResult,result);
     }
 
+    @Test
+    public void getTypeDescriptionTesters(){
+        //Given
+        TeamType type = TeamType.TESTERS;
+        team.setType(type);
+        String expectedString = "TESTERS";
+
+        //When
+        String result = team.getTypeDescription();
+
+        //Then
+        assertEquals(result, expectedString);
+    }
+
+    @Test
+    public void getTypeDescriptionAdv(){
+        //Given
+        TeamType type = TeamType.ADV;
+        team.setType(type);
+        String expectedString = "ADV";
+
+        //When
+        String result = team.getTypeDescription();
+
+        //Then
+        assertEquals(result, expectedString);
+    }
+
+    @Test
+    public void getTypeDescriptionDev(){
+        //Given
+        TeamType type = TeamType.DEV;
+        team.setType(type);
+        String expectedString = "DEV";
+
+        //When
+        String result = team.getTypeDescription();
+
+        //Then
+        assertEquals(result, expectedString);
+    }
+
+    @Test
+    public void getTypeDescriptionQA(){
+        //Given
+        TeamType type = TeamType.QA;
+        team.setType(type);
+        String expectedString = "QA";
+
+        //When
+        String result = team.getTypeDescription();
+
+        //Then
+        assertEquals(result, expectedString);
+    }
+
+    @Test
+    public void getTypeDescriptionUX(){
+        //Given
+        TeamType type = TeamType.UX;
+        team.setType(type);
+        String expectedString = "UX";
+
+        //When
+        String result = team.getTypeDescription();
+
+        //Then
+        assertEquals(result, expectedString);
+    }
+
+
 }
 
