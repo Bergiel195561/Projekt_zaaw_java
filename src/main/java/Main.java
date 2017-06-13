@@ -30,6 +30,7 @@ public class Main {
         commandResolver.registerCommand(new GetFromDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new SaveToDBCommand(core, mongoConnector));
         commandResolver.registerCommand(new AddDepartmentCommand(core));
+        commandResolver.registerCommand(new DeleteEmployeeCommand(core, mongoConnector));
         commandResolver.registerCommand(new AddManagerCommand(core));
         commandResolver.registerCommand(new SetCompanyManagerCommand(core));
         commandResolver.registerCommand(new AddEmployeeCommand(core));

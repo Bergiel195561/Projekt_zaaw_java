@@ -41,6 +41,7 @@ public class Employee {
     }
 
     public String getJobPosition() {
+        if(jobPosition == null) return "none";
         return jobPosition;
     }
 
