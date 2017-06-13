@@ -94,10 +94,10 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "teamUniqNumber='" + teamUniqNumber + '\'' +
-                ", type=" + type +
-                ", teamLeader=" + teamLeader +
-                ", teamMembers=" + teamMembers +
-                '}';
+                "\n\tteamUniqNumber='" + teamUniqNumber + '\'' +
+                "\n\ttype=" + type +
+                "\n\tteamLeader=" + teamLeader +
+                "\n\tteamMembers= \n" + teamMembers +
+                "\n}\n";
     }
 }

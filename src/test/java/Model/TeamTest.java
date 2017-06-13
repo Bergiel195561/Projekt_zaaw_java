@@ -76,7 +76,12 @@ public class TeamTest {
     public void testToString() {
         //Given
         Team team = new Team(TeamType.TESTERS, teamMembers);
-        String expectedResult = "Team{teamUniqNumber='null', type=TESTERS, teamLeader=null, teamMembers=[Employee{pesel='null', name='null', surname='null', jobPosition='null', salary=0.0, hireDate=null}, Employee{pesel='null', name='null', surname='null', jobPosition='null', salary=0.0, hireDate=null}, Employee{pesel='null', name='null', surname='null', jobPosition='null', salary=0.0, hireDate=null}]}";
+        String expectedResult = "Team{" +
+                "\n\tteamUniqNumber='" + null + '\'' +
+                "\n\ttype=" + "TESTERS" +
+                "\n\tteamLeader=" + null +
+                "\n\tteamMembers= \n" + teamMembers +
+                "\n}\n";
 
         //When
         String result = team.toString();

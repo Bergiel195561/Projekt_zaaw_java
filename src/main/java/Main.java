@@ -2,6 +2,7 @@ import ApplicationUtilitis.ApplicationCore;
 import Command.*;
 import DB.CascadeSave;
 import DB.MongoConnector;
+import Model.Company;
 
 import java.util.Scanner;
 
@@ -17,11 +18,13 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main(new ApplicationCore(), new CommandResolver(), MongoConnector.getInstance());
+
         main.start(args);
     }
 
     public Main(ApplicationCore core, CommandResolver commandResolver, MongoConnector mongoConnector) {
         this.core = core;
+        this.core.addCompany(mongoConnector.getDatastore().find(Company.class).get());
         this.commandResolver = commandResolver;
         this.mongoConnector = mongoConnector;
         this.mongoConnector.setDbNameForDefault();
