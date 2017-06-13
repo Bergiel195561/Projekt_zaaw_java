@@ -26,6 +26,7 @@ public class CurrencyInfoService {
 
     /**
      * Usuwanie ostatniego znaku ze stringa
+     *
      * @param str String z którego usuwany ostatni znak
      * @return String
      */
@@ -36,6 +37,7 @@ public class CurrencyInfoService {
 
     /**
      * Tworzenie listy symboli dla których pokazać wartość bazowej waluty
+     *
      * @param baseType Bazowy typ waluty, nie występuje w zwracanej wartości
      * @return
      */
@@ -45,44 +47,80 @@ public class CurrencyInfoService {
                 .filter(e -> !e.name().equalsIgnoreCase(baseType.name()))
                 .collect(Collectors.toList());
 
-        for (CurrencyType c : compareSymbols){
+        for (CurrencyType c : compareSymbols) {
             symbols += c.name() + ",";
-        };
+        }
 
         symbols = removeLastChar(symbols);
 
         return symbols;
     }
 
-    public void getCurrencyRates(CurrencyType baseType) {
+    public CurrencyModel getCurrencyRates(CurrencyType baseType) {
         String url = "latest?base=" + baseType;
         String compareSymbols = generateCurrencySymbols(baseType);
-        try {
-            HttpClient httpClient = HttpClients.createDefault();
-            HttpGet request = new HttpGet(API_URL + url + "&symbols=" + compareSymbols);
-            request.addHeader("ResourceVersion", "v3");
+        if (baseType != null) {
+            try {
+                HttpClient httpClient = HttpClients.createDefault();
+                HttpGet request = new HttpGet(API_URL + url + "&symbols=" + compareSymbols);
+                request.addHeader("ResourceVersion", "v3");
 
-            HttpResponse response = httpClient.execute(request);
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                String responseBody = EntityUtils.toString(response.getEntity(), "UTF-8");
-                JsonNode responseJson = objectMapper.readTree(responseBody);
+                HttpResponse response = httpClient.execute(request);
+                if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                    String responseBody = EntityUtils.toString(response.getEntity(), "UTF-8");
+                    JsonNode responseJson = objectMapper.readTree(responseBody);
 
-                CurrencyModel currencyModel = new CurrencyModel(responseJson);
-                System.out.println(currencyModel);
+                    CurrencyModel currencyModel = new CurrencyModel(responseJson);
+                    System.out.println(currencyModel);
+                    return currencyModel;
 
-            } else {
-                System.out.println(
-                        "Oops something went wrong\nHttp response code: " + response.getStatusLine().getStatusCode() + "\nHttp response body: "
-                                + EntityUtils.toString(response.getEntity()));
+                } else {
+                    System.out.println(
+                            "Oops something went wrong\nHttp response code: " + response.getStatusLine().getStatusCode() + "\nHttp response body: "
+                                    + EntityUtils.toString(response.getEntity()));
+                }
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Oops something went wrong\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Oops something went wrong\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } else {
+            return null;
         }
+
+        return null;
+    }
+
+
+    /**
+     * Metoda pozwalająca na skonwertowanie dwóch walut i obliczeniu ile
+     * jednostek jednej waluty da się kupić za konkretną ilosć innej waluty
+     *
+     * @param baseType   Bazowa waluta
+     * @param targetType Docelowa waluta
+     * @param amount     Ilość jednostek bazowej waluty
+     * @return Ilość jednostek docelowej waluty
+     */
+    public double convertCurrency(CurrencyType baseType, CurrencyType targetType, Double amount) {
+        if (baseType.equals(targetType)) {
+            return amount;
+        } else {
+            CurrencyModel currencyRates = getCurrencyRates(baseType);
+            if (currencyRates != null) {
+                Double rate = currencyRates.getRates().get(targetType);
+                if (rate != null) {
+                    return amount * rate;
+                } else {
+                    return 0.0;
+                }
+            } else {
+                return 0.0;
+            }
+        }
+
     }
 
 }
