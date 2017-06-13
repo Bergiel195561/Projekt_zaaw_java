@@ -26,6 +26,9 @@ public class GetFromDBCommand implements Command {
     @Override
     public void doAction(String[] args) {
         List<Company> companies = mongoConnector.getDatastore().find(Company.class).asList();
+        if (companies.size() == 0) {
+            companies.add(new Company());
+        }
         core.addAllCompanies(companies);
     }
 
