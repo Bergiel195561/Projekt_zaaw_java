@@ -6,4 +6,24 @@ package CurrencyInfo;
  */
 public enum CurrencyType {
     USD, EUR, PLN, GBP, CHF;
+
+    public static CurrencyType getCurrencyFromDesc(String desc){
+        switch(desc){
+            case "USD":
+                return USD;
+            case "EUR":
+                return EUR;
+            case "PLN":
+                return PLN;
+            case "GBP":
+                return  GBP;
+            case "CHF":
+                return CHF;
+        }
+        return null;
+    }
+
+    public static String getCurrencyTypesDesc(){
+        return "USD, EUR, PLN, GBP, CHF";
+    }
 }
