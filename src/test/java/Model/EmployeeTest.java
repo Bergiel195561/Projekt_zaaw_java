@@ -166,4 +166,16 @@ public class EmployeeTest {
 
     }
 
+    @Test
+    public void getEmptyJobPosition(){
+        //Given
+        String expected = "none";
+
+        //When
+        String result = employee.getJobPosition();
+
+        //Then
+        assertEquals(expected,result);
+    }
+
 }
